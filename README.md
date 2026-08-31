@@ -38,24 +38,6 @@ Or just edit the generated `.html` files directly if you prefer — they're
 plain HTML. The build script only exists so the header/footer/nav stay
 identical across all nine pages.
 
-## Previewing locally
-
-```
-python -m http.server 8000
-```
-
-then open http://localhost:8000.
-
-## Deploying to Hostinger
-
-1. In hPanel → **Files → File Manager**, open `public_html`.
-2. Back up / move aside the WordPress install (or deploy to a subfolder first
-   to test).
-3. Upload the contents of this folder (all `.html` files + the `assets/`
-   folder). `build.py` and `README.md` don't need to be uploaded.
-4. **Fix the SSL certificate** (hPanel → Security → SSL): the current cert is
-   expired, which blocks browsers from loading the site at all. Install/renew
-   the free Let's Encrypt cert and turn on auto-renewal + Force HTTPS.
 
 ## Known content gaps carried over from the old site
 
