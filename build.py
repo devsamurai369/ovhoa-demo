@@ -20,6 +20,7 @@ NAV = [
     ("File a Report", "file-a-report.html", None),
     ("Education & Development", None, [
         ("Become an Official", "become-an-official.html"),
+        ("Mentoring", "mentoring.html"),
         ("Rule Books", "rule-books.html"),
         ("Scorekeeper's Guide", "scorekeepers-guide.html"),
     ]),
@@ -118,6 +119,7 @@ def page(title, description, active, body):
         <ul>
           <li><a href="file-a-report.html">File a Report</a></li>
           <li><a href="become-an-official.html">Become an Official</a></li>
+          <li><a href="mentoring.html">Mentoring</a></li>
           <li><a href="rule-books.html">Rule Books</a></li>
           <li><a href="scorekeepers-guide.html">Scorekeeper's Guide</a></li>
         </ul>
@@ -246,7 +248,6 @@ BOARD = f"""
       {board_member("Nick Doud", "Executive Secretary", "secretary@ovhoarefs.com")}
       {board_member("Ken Handley", "Referee-in-Chief", "ric@ovhoarefs.com")}
       {board_member("Bryan Thurnauer", "Scheduler", "scheduler@ovhoarefs.com")}
-      {board_member("Earl Dalton", "Mentoring Coordinator", "mentoring@ovhoarefs.com")}
     </div>
   </div>
 </section>
@@ -307,9 +308,9 @@ CONTACT = """
         <p><a href="mailto:scheduler@ovhoarefs.com">scheduler@ovhoarefs.com</a></p>
       </div>
       <div class="card contact-card">
-        <h3>New Official Mentoring</h3>
-        <p class="role">Mentoring Coordinator &mdash; Earl Dalton</p>
-        <p><a href="mailto:mentoring@ovhoarefs.com">mentoring@ovhoarefs.com</a></p>
+        <h3>New Officials &amp; Mentoring</h3>
+        <p class="role">Ken Handley (Referee-in-Chief) or Brian Siuda (President)</p>
+        <p><a href="mailto:ric@ovhoarefs.com">ric@ovhoarefs.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
       </div>
     </div>
     <p class="center mt-2">Looking for someone else? See the full <a href="board-of-directors.html">Board of Directors</a>.</p>
@@ -332,7 +333,7 @@ FILE_REPORT = """
       <div>
         <h2>USA Hockey Games</h2>
         <p>To report penalties for USA Hockey games, you must use the online USA Hockey tool. For questions, contact <a href="board-of-directors.html#ken-handley">Ken Handley</a>.</p>
-        <div class="actions"><a class="btn dark" href="https://www.usahockey.com/officials" target="_blank" rel="noopener">USA Hockey Reporting Tool</a></div>
+        <div class="actions"><a class="btn dark" href="https://www.usahockey.com/incidentreport" target="_blank" rel="noopener">USA Hockey Incident Report</a></div>
       </div>
     </div>
 
@@ -391,6 +392,9 @@ BECOME = """
     <h2 class="mt-2">Registration Basics</h2>
     <p><strong>Minimum/maximum ages.</strong> USA Hockey has no minimum or maximum ages for officials. It is strongly recommended that, regardless of membership level attained, officials not work games of their own age classification or higher. Generally, officials can successfully officiate as young as age 10. Some states have restrictive child labor laws that do not exempt amateur sport officials &mdash; it is the obligation of the parent who registers a minor to determine the specific labor laws in their state prior to registering.</p>
     <p><strong>New game officials.</strong> All persons who have never registered with USA Hockey as an ice hockey game official must register at Level 1 for the first season. All registration requirements must be completed, and you must have your USA Hockey Referee Card and Sweater Crest in hand before accepting any game assignments.</p>
+    <div class="callout">
+      <p style="margin:0"><strong>New Level 1 officials:</strong> after you register, message Referee-in-Chief <a href="board-of-directors.html#ken-handley">Ken Handley</a> or President <a href="board-of-directors.html#brian-siuda">Brian Siuda</a> so we know you're joining us &mdash; we'll get you set up with a <a href="mentoring.html">mentor</a> and into the game-assignment system.</p>
+    </div>
     <p><strong>Returning game officials.</strong> Returning officials may apply for one membership level higher than their completed membership level the previous season. Once completely registered, an official under 16 years old may remain at Level 1 or choose to advance to Level 2.</p>
     <div class="callout">
       <p style="margin:0"><strong>New for 2026&ndash;27:</strong> An official who is 16 years old (or older) and has completed Level 1 officiating membership <strong>must advance to Level 2</strong> this season.</p>
@@ -545,6 +549,38 @@ BECOME = """
 </section>
 """
 
+MENTORING = """
+<section class="page-banner">
+  <div class="container">
+    <h1>Mentoring</h1>
+    <p class="lede">We take pride in what we do &mdash; and in the officials who come after us.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container prose">
+    <h2>Helping New Officials Succeed</h2>
+    <p>Officiating is a craft, and nobody masters it alone. The OVHOA takes pride in the quality of our work on the ice, and we take just as much pride in developing the next generation of officials. Every experienced official in this association started out nervous before their first game &mdash; and every one of them got better because someone took the time to help.</p>
+    <p>Our mentoring program pairs new officials with experienced members who can answer questions, work games alongside you, and give honest, constructive feedback. The goal is simple: help you succeed as an official, keep you in the game, and improve the game itself &mdash; better officiating makes hockey better for players, coaches, and fans alike.</p>
+    <h3>What you can expect</h3>
+    <ul>
+      <li>Guidance from experienced officials on positioning, signals, penalty standards, and game management</li>
+      <li>Support working your first games and honest feedback afterward</li>
+      <li>Help navigating registration, seminars, and the game-assignment system</li>
+      <li>A group of officials who want you to succeed &mdash; on and off the ice</li>
+    </ul>
+    <div class="callout">
+      <p style="margin:0"><strong>New Level 1 officials:</strong> once you've registered with USA Hockey, message Referee-in-Chief <a href="board-of-directors.html#ken-handley">Ken Handley</a> or President <a href="board-of-directors.html#brian-siuda">Brian Siuda</a> to get connected with a mentor and into the assignment system.</p>
+    </div>
+    <p class="center mt-2">
+      <a class="btn" href="become-an-official.html">Become an Official</a>
+      <a class="btn dark" href="mailto:ric@ovhoarefs.com">Email Ken Handley</a>
+      <a class="btn dark" href="mailto:president@ovhoarefs.com">Email Brian Siuda</a>
+    </p>
+  </div>
+</section>
+"""
+
 RULE_BOOKS = """
 <section class="page-banner">
   <div class="container">
@@ -691,6 +727,7 @@ PAGES = {
     "contact-us.html": ("Contact Us", "Contact the OVHOA Board of Directors.", CONTACT),
     "file-a-report.html": ("File a Report", "Penalty and incident reporting tools for USA Hockey, OHSAA, and ACHA games.", FILE_REPORT),
     "become-an-official.html": ("Become an Official", "How to register as a USA Hockey official: levels, requirements, exams, and seminars.", BECOME),
+    "mentoring.html": ("Mentoring", "The OVHOA mentoring program helps new officials succeed and improves the game.", MENTORING),
     "rule-books.html": ("Rule Books", "Rule reference books for USA Hockey, ACHA, and OHSAA games.", RULE_BOOKS),
     "scorekeepers-guide.html": ("Scorekeeper's Guide", "Scorekeeping resources for OVHOA off-ice officials.", SCOREKEEPERS),
 }
