@@ -25,7 +25,7 @@ NAV = [
     ]),
     ("Important Links", None, [
         ("USAH Registration", "https://membership.usahockey.com/"),
-        ("Arbiter Sports Login", "https://www1.arbitersports.com/shared/signin/signin.aspx"),
+        ("Horizon Web Ref Login", "https://horizonwebref.com/"),
         ("USA Hockey", "https://www.usahockey.com/"),
         ("OHSAA", "https://www.ohsaa.org/"),
         ("ACHA", "https://www.achahockey.org/"),
@@ -128,6 +128,7 @@ def page(title, description, active, body):
           <li><a href="https://www.usahockey.com/" target="_blank" rel="noopener">USA Hockey</a></li>
           <li><a href="https://www.ohsaa.org/" target="_blank" rel="noopener">OHSAA</a></li>
           <li><a href="https://www.achahockey.org/" target="_blank" rel="noopener">ACHA</a></li>
+          <li><a href="https://www.usphl.com/" target="_blank" rel="noopener">USPHL</a></li>
           <li><a href="https://www.ncaa.com/" target="_blank" rel="noopener">NCAA</a></li>
           <li><a href="https://www.nfhs.org/" target="_blank" rel="noopener">NFHS</a></li>
         </ul>
@@ -135,7 +136,7 @@ def page(title, description, active, body):
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Ohio Valley Hockey Officials Association</span>
-      <span><a href="https://www1.arbitersports.com/shared/signin/signin.aspx" target="_blank" rel="noopener">Arbiter Sports Login</a></span>
+      <span><a href="https://horizonwebref.com/" target="_blank" rel="noopener">Horizon Web Ref Login</a></span>
     </div>
   </div>
 </footer>
@@ -188,6 +189,7 @@ HOME = """
       <a href="https://www.usahockey.com/" target="_blank" rel="noopener"><img src="assets/img/logo-usah.png" alt="USA Hockey" loading="lazy"></a>
       <a href="https://www.achahockey.org/" target="_blank" rel="noopener"><img src="assets/img/logo-acha.png" alt="ACHA - American Collegiate Hockey Association" loading="lazy"></a>
       <a href="https://www.ohsaa.org/" target="_blank" rel="noopener"><img src="assets/img/logo-ohsaa.png" alt="OHSAA - Ohio High School Athletic Association" loading="lazy"></a>
+      <a href="https://www.usphl.com/" target="_blank" rel="noopener"><img src="assets/img/logo-usphl.png" alt="USPHL - United States Premier Hockey League" loading="lazy"></a>
       <a href="https://www.ncaa.com/" target="_blank" rel="noopener"><img src="assets/img/logo-ncaa.png" alt="NCAA" loading="lazy"></a>
     </div>
   </div>
@@ -216,8 +218,9 @@ HISTORY = """
 
 
 def board_member(name, role, email):
+    slug = name.lower().replace(" ", "-")
     return f"""
-      <div class="board-card">
+      <div class="board-card" id="{slug}">
         <img src="assets/img/avatar-placeholder.png" alt="" loading="lazy">
         <div>
           <h3>{name}</h3>
@@ -264,14 +267,14 @@ DOCUMENTS = """
           <span class="doc-name">OVHOA Bylaws</span>
           <span class="doc-meta">Updated bylaws coming soon</span>
         </div>
-        <a class="btn dark" href="assets/docs/ComingSoon.pdf" target="_blank" rel="noopener">View PDF</a>
+        <a class="btn" href="assets/docs/ComingSoon.pdf" target="_blank" rel="noopener">View PDF</a>
       </div>
       <div class="doc-item card">
         <div>
           <span class="doc-name">OVHOA Manual</span>
           <span class="doc-meta">2016&ndash;2017 edition &middot; PDF</span>
         </div>
-        <a class="btn dark" href="assets/docs/OVHOA_Manual_2016-2017.pdf" target="_blank" rel="noopener">View PDF</a>
+        <a class="btn" href="assets/docs/OVHOA_Manual_2016-2017.pdf" target="_blank" rel="noopener">View PDF</a>
       </div>
     </div>
   </div>
@@ -328,8 +331,8 @@ FILE_REPORT = """
       <div class="org-logo"><img src="assets/img/logo-usah.png" alt="USA Hockey" loading="lazy"></div>
       <div>
         <h2>USA Hockey Games</h2>
-        <p>To report penalties for USA Hockey games, you must use the online USA Hockey tool. For questions, contact <a href="mailto:ric@ovhoarefs.com">Ken Handley</a>.</p>
-        <div class="actions"><a class="btn" href="https://www.usahockey.com/officials" target="_blank" rel="noopener">USA Hockey Reporting Tool</a></div>
+        <p>To report penalties for USA Hockey games, you must use the online USA Hockey tool. For questions, contact <a href="board-of-directors.html#ken-handley">Ken Handley</a>.</p>
+        <div class="actions"><a class="btn dark" href="https://www.usahockey.com/officials" target="_blank" rel="noopener">USA Hockey Reporting Tool</a></div>
       </div>
     </div>
 
@@ -347,7 +350,7 @@ FILE_REPORT = """
             <p>Please write legibly and include the ejected person&rsquo;s first and last names. Make sure the form is complete at the bottom with the date and name of the administrator you spoke with at the school.</p>
           </div>
         </details>
-        <div class="actions"><a class="btn" href="http://officials.myohsaa.org/Logon" target="_blank" rel="noopener">OHSAA Officials Login</a></div>
+        <div class="actions"><a class="btn dark" href="http://officials.myohsaa.org/Logon" target="_blank" rel="noopener">OHSAA Officials Login</a></div>
       </div>
     </div>
 
@@ -355,8 +358,8 @@ FILE_REPORT = """
       <div class="org-logo"><img src="assets/img/logo-acha.png" alt="ACHA" loading="lazy"></div>
       <div>
         <h2>ACHA (Collegiate) Games</h2>
-        <p>To report penalties for ACHA games, use this Microsoft Word form. When completed, email it <strong>as an attachment</strong> to the appropriate ACHA Commissioner, ACHA Referee-in-Chief, and <a href="mailto:ric@ovhoarefs.com">Ken Handley</a>.</p>
-        <div class="actions"><a class="btn" href="assets/docs/ACHA_Incident_Report.docx" download>Download the ACHA Form</a></div>
+        <p>To report penalties for ACHA games, use this Microsoft Word form. When completed, email it <strong>as an attachment</strong> to the appropriate ACHA Commissioner, ACHA Referee-in-Chief, and <a href="board-of-directors.html#ken-handley">Ken Handley</a>.</p>
+        <div class="actions"><a class="btn dark" href="assets/docs/ACHA_Incident_Report.docx" download>Download the ACHA Form</a></div>
       </div>
     </div>
 
@@ -368,23 +371,39 @@ BECOME = """
 <section class="page-banner">
   <div class="container">
     <h1>Become an Official</h1>
-    <p class="lede">Everything you need to know about the USA Hockey Officials Registration Program.</p>
+    <p class="lede">USA Hockey Officiating Membership requirements for the 2026&ndash;27 season.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container prose">
-    <h2>Registration Basics</h2>
-    <p><strong>Registration season.</strong> The registration season for the Officiating Program begins on August 1 and ends on May 9 of the following year. USA Hockey officials registration is valid for the entire season in any district or state in the United States. Membership in a state or local officials association is not required for USA Hockey officials registration.</p>
-    <p><strong>Minimum/maximum ages.</strong> USA Hockey has no minimum or maximum ages for officials. It is highly recommended that, regardless of level attained, officials not work games of their own age classification or higher. Generally, officials can successfully officiate as young as age 10.</p>
-    <p><strong>New officials (never been registered).</strong> All persons who have never officiated must register at Level 1 for the first season. Only the District Referee-in-Chief, prior to registration, may make exceptions in extreme cases where the applicant has extensive officiating experience that would foster registration at Level 2. No first-time registered official may register above Level 2 for the first season.</p>
+    <h2>2026&ndash;27 Key Dates</h2>
+    <ul class="meeting-list stacked card" style="max-width:none">
+      <li><span class="when">May 1, 2026</span> <span class="how">Membership applications open for 2026&ndash;27</span></li>
+      <li><span class="when">November 20, 2026</span> <span class="how">Applications close &mdash; no one may begin the membership process after this date</span></li>
+      <li><span class="when">November 30, 2026</span> <span class="how">All 2025&ndash;26 memberships expire</span></li>
+      <li><span class="when">December 15, 2026</span> <span class="how">Classroom seminars for 2026&ndash;27 conclude</span></li>
+      <li><span class="when">December 31, 2026</span> <span class="how">Membership closes &mdash; all education requirements must be complete</span></li>
+    </ul>
+    <p class="mt-1">An official without a completed 2026&ndash;27 membership after November 30, 2026 becomes ineligible to work USA Hockey sanctioned games until they complete their current season membership and receive their referee card and crest.</p>
+    <p>USA Hockey Officiating Membership is valid for the entire current season in any district or state in the United States. Membership in a local officials association or local hockey league is not required for USA Hockey Officiating Program membership.</p>
+
+    <h2 class="mt-2">Registration Basics</h2>
+    <p><strong>Minimum/maximum ages.</strong> USA Hockey has no minimum or maximum ages for officials. It is strongly recommended that, regardless of membership level attained, officials not work games of their own age classification or higher. Generally, officials can successfully officiate as young as age 10. Some states have restrictive child labor laws that do not exempt amateur sport officials &mdash; it is the obligation of the parent who registers a minor to determine the specific labor laws in their state prior to registering.</p>
+    <p><strong>New game officials.</strong> All persons who have never registered with USA Hockey as an ice hockey game official must register at Level 1 for the first season. All registration requirements must be completed, and you must have your USA Hockey Referee Card and Sweater Crest in hand before accepting any game assignments.</p>
+    <p><strong>Returning game officials.</strong> Returning officials may apply for one membership level higher than their completed membership level the previous season. Once completely registered, an official under 16 years old may remain at Level 1 or choose to advance to Level 2.</p>
+    <div class="callout">
+      <p style="margin:0"><strong>New for 2026&ndash;27:</strong> An official who is 16 years old (or older) and has completed Level 1 officiating membership <strong>must advance to Level 2</strong> this season.</p>
+    </div>
+    <p><strong>Note:</strong> Once the online membership application has been submitted, an official cannot change the registration level they applied for.</p>
   </div>
 </section>
 
 <section class="section alt">
   <div class="container">
     <div class="section-title">
-      <h2>USA Hockey Officiating Requirements by Level</h2>
+      <span class="kicker">2026&ndash;27 Season</span>
+      <h2>Membership Education Requirements by Level</h2>
     </div>
     <div class="table-wrap">
       <table class="levels">
@@ -393,57 +412,59 @@ BECOME = """
           <tr>
             <td class="level-name">Level 1</td>
             <td><ul>
-              <li>Complete the <a href="https://membership.usahockey.com/register/age" target="_blank" rel="noopener">online Membership Application</a></li>
-              <li>Submit Officiating Membership fee ($55.00)</li>
-              <li>Score 35/50 or higher on the <a href="https://www.usahockey.com/openbookexam" target="_blank" rel="noopener">Open Book Exam</a></li>
-              <li>Attend and complete a Level 1 Virtual Classroom Seminar sanctioned by USA Hockey (1.5&ndash;2 hours) taught by national staff</li>
-              <li>Attend and complete a local Level 1 In-Person Classroom Seminar sanctioned by USA Hockey that includes an on-ice session (1.5&ndash;3 hours)</li>
+              <li>Submit the <a href="https://membership.usahockey.com/" target="_blank" rel="noopener">online Officiating Membership application</a> and fee ($75.00)</li>
+              <li>Complete a Level 1 officiating classroom seminar sanctioned by USA Hockey</li>
+              <li>Complete Level 1 Online Education Module training</li>
+              <li>Complete the online Level 1 Playing Rules Exercise (40 questions)</li>
             </ul></td>
           </tr>
           <tr>
             <td class="level-name">Level 2</td>
             <td><ul>
-              <li>Must have been Level 1 (Complete) within the last two seasons</li>
-              <li>Complete the <a href="https://membership.usahockey.com/register/age" target="_blank" rel="noopener">online Membership Application</a></li>
-              <li>Submit Officiating Membership fee ($110.00)</li>
-              <li>Score 60/75 or higher on the <a href="https://www.usahockey.com/openbookexam" target="_blank" rel="noopener">Open Book Exam</a></li>
-              <li>Attend and complete a <a href="https://www.usahockey.com/officialseminars" target="_blank" rel="noopener">Level 2 Virtual Classroom Seminar</a></li>
-              <li>Complete the <a href="https://www.usahockey.com/officiatingonlineseminarmodules" target="_blank" rel="noopener">Level 2 Online Education Module curriculum</a></li>
+              <li>Must have completed Level 1 membership within the last two seasons</li>
+              <li>Submit the <a href="https://membership.usahockey.com/" target="_blank" rel="noopener">online Level 2 Officiating Membership application</a> and fee ($135.00)</li>
+              <li>Complete a Level 2 officiating classroom seminar sanctioned by USA Hockey</li>
+              <li>Complete Level 2 Online Education Module training</li>
+              <li>Complete the online Level 2 Playing Rules Exercise (60 questions)</li>
             </ul></td>
           </tr>
           <tr>
             <td class="level-name">Level 3</td>
             <td><ul>
-              <li>Must have been Level 2 or higher (Complete) during the previous season</li>
-              <li>Complete the <a href="https://membership.usahockey.com/register/age" target="_blank" rel="noopener">online Membership Application</a></li>
-              <li>Submit Registration Fee ($110.00)</li>
-              <li>Score 85/100* or higher on the <a href="https://www.usahockey.com/openbookexam" target="_blank" rel="noopener">Open Book Exam</a></li>
-              <li>Attend and complete a <a href="https://www.usahockey.com/officialseminars" target="_blank" rel="noopener">Level 3 Officiating Virtual Classroom Seminar</a></li>
-              <li>Complete the <a href="https://www.usahockey.com/officiatingonlineseminarmodules" target="_blank" rel="noopener">Level 3 Online Education Module curriculum</a></li>
-              <li><em>*Level 3 Tenured Officials must attain an Open Book Exam score of 45/50.</em></li>
+              <li>Must have completed Level 2 (or higher) membership during the previous season</li>
+              <li>Submit the <a href="https://membership.usahockey.com/" target="_blank" rel="noopener">online Level 3 Officiating Membership application</a> and fee ($135.00)</li>
+              <li>Complete a Level 3 officiating classroom seminar sanctioned by USA Hockey</li>
+              <li>Complete Level 3 Online Education Module training</li>
+              <li>Complete the online Level 3 Playing Rules Exercise (80 questions; 40 for tenured officials)</li>
             </ul></td>
           </tr>
           <tr>
             <td class="level-name">Level 4</td>
             <td><ul>
-              <li>Must have been Level 3 or 4 (Complete) last season</li>
-              <li>Complete the <a href="https://membership.usahockey.com/register/age" target="_blank" rel="noopener">online Membership Application</a></li>
-              <li>Submit Registration Fee ($110.00)</li>
-              <li>Score 90/100* or higher on the <a href="https://www.usahockey.com/openbookexam" target="_blank" rel="noopener">Open Book Exam</a></li>
-              <li>Attend and complete a <a href="https://www.usahockey.com/officialseminars" target="_blank" rel="noopener">Level 4 Officiating Virtual Classroom Seminar</a></li>
-              <li>Complete the <a href="https://www.usahockey.com/officiatingonlineseminarmodules" target="_blank" rel="noopener">Level 4 Online Education Module curriculum</a></li>
-              <li><em>*Level 4 Tenured Officials must attain an Open Book Exam score of 45/50.</em></li>
+              <li>Must have completed Level 3 or Level 4 membership last season</li>
+              <li>Submit the <a href="https://membership.usahockey.com/" target="_blank" rel="noopener">online Level 4 Officiating Membership application</a> and fee ($135.00)</li>
+              <li>Complete a Level 4 officiating classroom seminar sanctioned by USA Hockey</li>
+              <li>Complete Level 4 Online Education Module training</li>
+              <li>Complete the online Level 4 Playing Rules Exercise (80 questions; 40 for tenured officials)</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <td class="level-name">Affiliated (L0)</td>
+            <td><ul>
+              <li>Submit the online L0 Non-Skating Affiliate Officiating Membership application and fee ($55.00)</li>
+              <li><em>An Affiliated member is not eligible to work any USA Hockey sanctioned games.</em></li>
             </ul></td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="callout mt-2">
-      <p style="margin:0 0 0.5rem"><strong>All levels require:</strong></p>
+      <p style="margin:0 0 0.5rem"><strong>All levels also require:</strong></p>
       <ul style="margin:0">
-        <li>Completion of <a href="https://www.usahockey.com/safesportprogram" target="_blank" rel="noopener">SafeSport training</a> (if 2006 birth year or older)</li>
-        <li>Completion and maintenance of a USA Hockey sanctioned criminal <a href="https://www.usahockey.com/backgroundscreen" target="_blank" rel="noopener">Background Screen</a> if 18+ years old on June 1</li>
+        <li>Completion of <a href="https://www.usahockey.com/safesportprogram" target="_blank" rel="noopener">SafeSport training</a> (if 2009 birth year or older)</li>
+        <li>Completion and maintenance of a USA Hockey sanctioned NCSI <a href="https://www.usahockey.com/backgroundscreen" target="_blank" rel="noopener">Background Screen</a> if 18+ years old on May 1, 2026</li>
       </ul>
+      <p style="margin:0.5rem 0 0"><em>All USA Hockey officiating membership fees are non-refundable.</em></p>
     </div>
   </div>
 </section>
@@ -452,47 +473,74 @@ BECOME = """
   <div class="container prose">
     <h2>Program Details</h2>
     <details class="info">
-      <summary>Complete vs. incomplete registration</summary>
+      <summary>Playing Rules Exercise</summary>
       <div class="info-body">
-        <p>&ldquo;Complete&rdquo; means an official has met all the criteria (testing and seminars) at the level for which they applied. &ldquo;Incomplete&rdquo; means an official has filed an application but has not completed all the necessary criteria for that level.</p>
-        <p>A new official (not registered the previous year) may not officiate until completely registered. A returning official (complete the previous season) may not officiate after November 30 (the expiration date on the previous year&rsquo;s card) unless completely registered for the new season.</p>
+        <p>Every membership level includes a Playing Rules Exercise requirement. Playing Rules Exercises consist of answering a series of questions using the current 2025&ndash;29 USA Hockey Playing Rules, and the exercise is completed when the game official answers the required number of questions correctly:</p>
+        <ul>
+          <li>Level 1 &mdash; 40 questions</li>
+          <li>Level 2 &mdash; 60 questions</li>
+          <li>Level 3 &mdash; 80 questions</li>
+          <li>Level 4 &mdash; 80 questions</li>
+          <li>Tenured (L3 or L4) &mdash; 40 questions</li>
+        </ul>
+        <p>It is strongly recommended that you use your copy of the 2025&ndash;29 USA Hockey Playing Rules to answer the questions.</p>
       </div>
     </details>
     <details class="info">
-      <summary>Open book rules exam</summary>
+      <summary>Classroom seminar attendance</summary>
       <div class="info-body">
-        <p>Each season all officials must complete the open book rules exam. Officials who do not receive the minimum score for the appropriate level will be sent a retake notice and a new answer sheet. Only one retake exam per official is allowed, and it must be completed within 30 days. If an official fails the exam twice, they become completely registered at the highest level for which the retake exam score would qualify.</p>
+        <p>Attendance at a sanctioned USA Hockey Officiating Classroom Seminar is required for all applicants, regardless of level and years of experience. Once the seminar is complete, the attendance roster is submitted to the USA Hockey National Office for credit within 24&ndash;48 hours; questions about attendance credit should be directed to the course facilitator.</p>
+        <p>An official is not required to attend a seminar in their own state or USA Hockey District &mdash; any sanctioned seminar in any district counts toward membership.</p>
       </div>
     </details>
     <details class="info">
-      <summary>Renewal officials</summary>
+      <summary>Online education modules</summary>
       <div class="info-body">
-        <p>Renewal officials may apply for one level higher than their completed registration level from the previous season. Officials are allowed to take one season as unregistered or incomplete and return at the same level they were last completely registered at. Level 1 completely registered officials are allowed to take one season off and still be eligible for Level 2 the following season.</p>
-        <p>The eligible level for each renewal official is designated on the pre-printed officiating application. An official may apply for a lower level than their eligible level; however, once the application has been received at the National Office, an official cannot change the level they applied for.</p>
+        <p>Every membership level includes Online Education Module requirements. An official must complete their module training, which includes written and video content and short quizzes.</p>
       </div>
     </details>
     <details class="info">
-      <summary>Returning after a season (or more) away</summary>
+      <summary>SafeSport training</summary>
       <div class="info-body">
-        <p>We are always happy to have officials return to the USA Hockey Officiating Program after some time away. Because of your past experience you may be able to register at a level higher than Level 1, depending on the level at which you were last registered. As a general rule, officials may take one season off (unregistered or incomplete) without forfeiting current level status. If an official is off for the previous two seasons, they must apply for registration one level lower (except Level 1) than the last season completely registered. A Level 4 official who takes 3 or more seasons off will be required to return at Level 2.</p>
+        <p>Officials with a 2009 birth year or older are required to complete the online U.S. Center for SafeSport education program. The online program is free of charge and is hosted on the U.S. Center for SafeSport web platform.</p>
+        <p>All returning officials must renew SafeSport training within 12 months of the previous season&rsquo;s training (e.g., if you completed training on September 15, 2025, you must renew by September 15, 2026). An official who does not maintain annual training within 12 months becomes ineligible to work any USA Hockey sanctioned game.</p>
       </div>
     </details>
     <details class="info">
-      <summary>Seminar attendance</summary>
+      <summary>Background screening</summary>
       <div class="info-body">
-        <p>Attendance at a sanctioned USA Hockey Officials Seminar is required for all applicants, regardless of level. The seminar must consist of both classroom and ice time, conducted by USA Hockey Trained Instructors. Every official and instructor in attendance must sign in on the official USA Hockey Seminar Attendance Form, which is returned to the National Office and recorded in each official&rsquo;s record.</p>
-        <p>Level 4 applicants must attend a Level 4&ndash;specific seminar. There is no opportunity to complete the Level 2, 3, or 4 closed book testing except at the USA Hockey seminar you attend.</p>
+        <p>All officials who are 18+ years old by May 1 of the current year must submit to a USA Hockey coordinated criminal background screen. Background screens are valid for two seasons, and no background screen performed by an outside entity or governing body will be accepted.</p>
       </div>
     </details>
     <details class="info">
-      <summary>Championships eligibility &amp; game scheduling</summary>
+      <summary>Complete vs. incomplete membership</summary>
       <div class="info-body">
-        <p>To be eligible to officiate in any State, Regional or National Championships, an official must be completely registered on or before December 31 of the current season. Only Level 4 officials are eligible to referee National Championships.</p>
-        <p>Registration with the USA Hockey Officiating Program does not guarantee any game assignments. Officials are responsible for obtaining their own game assignments from local game schedulers as designated in each District.</p>
-        <p>Any game scheduler who assigns incompletely registered officials is subject to serious liability, as this jeopardizes the insurance coverage of the officials and both teams involved. Whenever possible, only qualified officials should be assigned to games. Updated listings of currently registered officials are available from the District Referee-in-Chief on a regular basis.</p>
+        <p>&ldquo;Complete&rdquo; membership means an official has completed all education requirements at the level for which they applied. &ldquo;Incomplete&rdquo; means an official has submitted a membership application but has not completed all education requirements.</p>
+        <p>A new incomplete official may not officiate any USA Hockey sanctioned games until they are completely registered and receive their current season referee card and sweater crest. If a member official does not complete their education requirements by December 31, 2026, their membership is closed as &ldquo;incomplete&rdquo; and the membership fee is not refunded.</p>
+        <p>Once complete, a membership is valid through November 30 of the following season. All member officials are responsible for tracking their own progress with membership education requirements.</p>
       </div>
     </details>
-    <p class="center mt-2"><a class="btn" href="https://membership.usahockey.com/" target="_blank" rel="noopener">Register with USA Hockey</a></p>
+    <details class="info">
+      <summary>Returning after time away (&ldquo;Welcome Back&rdquo; program)</summary>
+      <div class="info-body">
+        <p>USA Hockey&rsquo;s &ldquo;Welcome Back&rdquo; program assists experienced officials in returning to membership, offering a two-year amnesty to return at the level they last left.</p>
+        <ul>
+          <li>Away 3&ndash;10 seasons: may return at Level 2 by requesting a paper application from the USA Hockey Office.</li>
+          <li>Away 3&ndash;10 seasons but officiating under another governing body (NFHS, NCAA, etc.): submit a letter of request to the USA Hockey National Office and you may be allowed to return at the level you last completed.</li>
+          <li>Away more than 10 seasons: contact your District Referee-in-Chief for a level recommendation.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="info">
+      <summary>Tournament eligibility &amp; game scheduling</summary>
+      <div class="info-body">
+        <p>To be eligible to officiate in any State, District or National Tournaments, an official must be completely registered on or before December 31 of the current season.</p>
+        <p>Registration with the USA Hockey Officiating Program does not guarantee any game assignments. Officials are responsible for obtaining their own game assignments from Local Game Schedulers as designated in each District.</p>
+        <p>Any game scheduler who assigns incompletely registered officials is subject to serious liability, as this jeopardizes the insurance coverage of the officials and both teams involved. Whenever possible, only level-qualified officials should be assigned to games. Updated listings of currently registered officials are available from the District Referee-in-Chief on a regular basis.</p>
+      </div>
+    </details>
+    <p class="center mt-2"><a class="btn dark" href="https://membership.usahockey.com/" target="_blank" rel="noopener">Register with USA Hockey</a></p>
+    <p class="center" style="color:var(--gray);font-size:0.88rem">Requirements summarized from the official <a href="https://www.usahockey.com/registrationrules" target="_blank" rel="noopener">USA Hockey 2026&ndash;27 Membership Rules &amp; Policies</a>. Always check the USA Hockey page for the latest rules.</p>
   </div>
 </section>
 """
@@ -501,20 +549,119 @@ RULE_BOOKS = """
 <section class="page-banner">
   <div class="container">
     <h1>Rule Books</h1>
-    <p class="lede">Rule references for the leagues we officiate.</p>
+    <p class="lede">Know which rulebook governs your game. OVHOA officials work under three different rule sets depending on the league &mdash; USA Hockey rules for youth games, NCAA rules for ACHA and USPHL games, and NFHS/OHSAA regulations for high school games.</p>
   </div>
 </section>
+
 <section class="section">
-  <div class="container">
-    <div class="callout coming-soon">
-      <h2>Rule reference book links coming soon</h2>
-      <p>In the meantime, the current rulebooks are available directly from each governing body:</p>
-      <p>
-        <a class="btn dark" href="https://www.usahockey.com/rulebook" target="_blank" rel="noopener">USA Hockey Rulebook</a>
-        <a class="btn dark" href="https://www.achahockey.org/" target="_blank" rel="noopener">ACHA</a>
-        <a class="btn dark" href="https://www.ohsaa.org/sports/ihk" target="_blank" rel="noopener">OHSAA Ice Hockey</a>
-      </p>
+  <div class="container grid" style="gap:1.5rem">
+
+    <div class="card report-block">
+      <div class="org-logo"><img src="assets/img/logo-usah.png" alt="USA Hockey" loading="lazy"></div>
+      <div>
+        <h2>USA Hockey</h2>
+        <p><strong>Governs:</strong> All USA Hockey sanctioned youth, high school club, and adult games.</p>
+        <p>The current rulebook is the <strong>2025&ndash;29 USA Hockey Playing Rules</strong>. Every registered official needs it &mdash; it is also the reference for your annual Playing Rules Exercise.</p>
+        <div class="actions">
+          <a class="btn dark" href="https://www.usahockey.com/rulebook" target="_blank" rel="noopener">USA Hockey Rulebook</a>
+        </div>
+      </div>
     </div>
+
+    <div class="card report-block">
+      <div class="org-logo"><img src="assets/img/logo-ncaa.png" alt="NCAA" loading="lazy"></div>
+      <div>
+        <h2>NCAA Rules</h2>
+        <p><strong>Governs:</strong> ACHA and USPHL games. If you are working collegiate club or USPHL junior hockey, this is your rulebook &mdash; not USA Hockey&rsquo;s.</p>
+        <details class="info">
+          <summary>Major rule changes in the 2026&ndash;28 NCAA rulebook</summary>
+          <div class="info-body">
+            <ul>
+              <li><strong>Helmets (Rule 9.4):</strong> A player who intentionally removes their helmet during play is assessed a minor penalty. A goalkeeper who intentionally removes their helmet/facemask on an opposing breakaway concedes an awarded goal.</li>
+              <li><strong>Coincidental penalties (Rule 19):</strong> In the last five minutes of regulation or any time in overtime, a minor to Team A and a major to Team B at the same stoppage means the three-minute differential (one minute against a double minor) is served immediately.</li>
+              <li><strong>Major penalties (Rule 20):</strong> A second major penalty in the same game is an automatic game misconduct.</li>
+              <li><strong>Goalkeeper penalties (Rule 28.2):</strong> A goalkeeper is not sent to the penalty bench for an offense incurring a major and/or misconduct penalty.</li>
+              <li><strong>Goalkeeper&rsquo;s privileged area (Rule 28.4):</strong> Removed.</li>
+              <li><strong>Fighting (Rule 48.1):</strong> Fighting is defined as punching or attempting to punch an opponent <em>repeatedly</em>; a single punch is penalized as roughing.</li>
+              <li><strong>Checking from behind (Rule 50):</strong> &ldquo;In open ice&rdquo; removed from the rule.</li>
+              <li><strong>Hitting after the whistle (Rule 53.3):</strong> Eliminated as its own infraction &mdash; classified as roughing or unsportsmanlike conduct.</li>
+              <li><strong>Throwing the stick (Rule 55.5):</strong> Throwing a stick outside the playing area is upgraded from a misconduct to a game misconduct.</li>
+              <li><strong>Spitting (Rule 79.5):</strong> Penalized as a game disqualification.</li>
+              <li><strong>Faceoffs (Rule 81):</strong> The blade of the stick must be flat on the ice.</li>
+              <li><strong>Offside (Rule 86.1):</strong> A player must control the puck with their stick before their skates enter the offensive zone.</li>
+              <li><strong>Hand pass (Rule 84):</strong> Hand passes initiated and completed in the defensive zone are permitted.</li>
+              <li><strong>Delay of game (new rule):</strong> A dump-in from the attacking team&rsquo;s own side of center that the goalkeeper freezes results in an end-zone faceoff in the defending zone with no defensive substitutions.</li>
+              <li><strong>Timeouts (Rule 92.2):</strong> Not usable when your team cannot change players due to an infraction; one timeout per stoppage; no extra regular-season overtime timeout.</li>
+              <li><strong>Coach&rsquo;s challenge (Rule 93.4):</strong> A disallowed-goal minor for goalkeeper interference may be challenged; one challenge per stoppage per team.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="info">
+          <summary>NCAA penalty terminology for USA Hockey officials</summary>
+          <div class="info-body">
+            <p><strong>Game misconduct (Rule 22):</strong> Suspension for the balance of the game; a substitute may replace the player immediately. With a major + game misconduct, the team places a substitute in the box to serve the major.</p>
+            <p><strong>Disqualification (Rule 23):</strong> The NCAA&rsquo;s equivalent of a match-type removal &mdash; the player is removed for the remainder of the game <em>plus</em> a major penalty, with progressive suspensions for repeat disqualifications (first DQ: that game plus one; second: plus two; and so on). DQs carry over season to season for players with remaining eligibility.</p>
+            <p>There is no &ldquo;match penalty&rdquo; category in the NCAA book &mdash; conduct that draws a match penalty under USA Hockey rules is generally a disqualification under NCAA rules.</p>
+          </div>
+        </details>
+        <div class="actions">
+          <a class="btn" href="assets/docs/NCAA_Rulebook_2026-28.pdf" target="_blank" rel="noopener">2026&ndash;28 NCAA Rulebook (PDF)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card report-block">
+      <div class="org-logo"><img src="assets/img/logo-acha.png" alt="ACHA" loading="lazy"></div>
+      <div>
+        <h2>ACHA</h2>
+        <p><strong>Governs:</strong> American Collegiate Hockey Association (collegiate club) games.</p>
+        <p>The ACHA plays under the <strong>NCAA rulebook</strong> &mdash; use the 2026&ndash;28 NCAA rules above. The ACHA does not publish a separate rule-modifications list; any division-specific directives come through the league and your assigner. Questions about ACHA rule application should go to Referee-in-Chief <a href="mailto:ric@ovhoarefs.com">Ken Handley</a>.</p>
+        <p>Penalty reporting for ACHA games is on our <a href="file-a-report.html">File a Report</a> page.</p>
+        <div class="actions">
+          <a class="btn dark" href="https://www.achahockey.org/" target="_blank" rel="noopener">ACHA Website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card report-block">
+      <div class="org-logo"><img src="assets/img/logo-usphl.png" alt="USPHL - United States Premier Hockey League" loading="lazy"></div>
+      <div>
+        <h2>USPHL</h2>
+        <p><strong>Governs:</strong> USPHL (NCDC and Premier) junior games.</p>
+        <p>The USPHL plays under the <strong>2026&ndash;28 NCAA rulebook</strong> with league-specific exceptions. The official 2026&ndash;27 Officiating Team Handbook below covers the league&rsquo;s protocols and variances &mdash; read it in full before your first USPHL assignment.</p>
+        <details class="info">
+          <summary>Key USPHL variances from NCAA rules</summary>
+          <div class="info-body">
+            <ul>
+              <li><strong>Fighting:</strong> In lieu of a game disqualification, a player receives a game misconduct. Any <em>secondary</em> fight is a major + disqualification. Non-participating players must clear to their benches (Rule 48.2) &mdash; strictly enforced.</li>
+              <li><strong>Helmet removal in an altercation:</strong> Treated as grasping the facemask (Rule 47.1) and penalized as a disqualification &mdash; no game-misconduct option.</li>
+              <li><strong>Coincidental minors:</strong> On-ice strength stays 5-on-5 in all divisions.</li>
+              <li><strong>High-sticking a player with a half shield:</strong> Escalating options based on severity &mdash; minor (no injury), double minor (accidental), major + game misconduct, or major + disqualification.</li>
+              <li><strong>Overtime:</strong> Games cannot end in a tie &mdash; 5-minute 3-on-3 overtime, then a 3-man shootout, then sudden-death shootout with new shooters until the roster is exhausted.</li>
+              <li><strong>Mercy rule (Premier):</strong> After the first period, an 8+ goal differential runs the clock (except power plays). Any major during mercy-rule time is an automatic disqualification.</li>
+              <li><strong>Video review (NCDC only):</strong> One coach&rsquo;s challenge per game, contested goals only; officials may not initiate a review.</li>
+            </ul>
+          </div>
+        </details>
+        <div class="actions">
+          <a class="btn" href="assets/docs/USPHL_Officiating_Handbook_2026-27.pdf" target="_blank" rel="noopener">USPHL Officiating Handbook 2026&ndash;27 (PDF)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card report-block">
+      <div class="org-logo"><img src="assets/img/logo-ohsaa.png" alt="OHSAA" loading="lazy"></div>
+      <div>
+        <h2>OHSAA / NFHS</h2>
+        <p><strong>Governs:</strong> Ohio varsity high school games.</p>
+        <p>OHSAA ice hockey is played under NFHS rules with OHSAA regulations. Rulebooks and officials&rsquo; materials are distributed through your OHSAA officials account.</p>
+        <div class="actions">
+          <a class="btn dark" href="https://www.ohsaa.org/sports/ihk" target="_blank" rel="noopener">OHSAA Ice Hockey</a>
+          <a class="btn dark" href="http://officials.myohsaa.org/Logon" target="_blank" rel="noopener">OHSAA Officials Login</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 """
