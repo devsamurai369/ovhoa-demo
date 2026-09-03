@@ -779,18 +779,38 @@ RINKS = """
 <section class="page-banner">
   <div class="container">
     <h1>Rink Locations</h1>
-    <p class="lede">Where we work. Addresses and directions for the rinks OVHOA officials are assigned to across Greater Cincinnati and Northern Kentucky.</p>
+    <p class="lede">Addresses and directions for the rinks OVHOA officials work across Greater Cincinnati and Northern Kentucky.</p>
   </div>
 </section>
 <section class="section">
   <div class="container">
-    <!-- Filled from the Rinks tab of the Google Sheet (Name | Address | Notes).
-         Until that tab exists the empty state below is shown. -->
-    <div class="board-grid" data-sheet-rinks>
-      <div class="callout coming-soon" style="grid-column:1/-1">
-        <h2>Rink list coming soon</h2>
-        <p>We&rsquo;re putting together addresses, parking notes and locker-room details for every rink we cover. Working a rink you don&rsquo;t know? Ask your <a href="board-of-directors.html#bryan-thurnauer">scheduler</a> in the meantime.</p>
+    <div class="board-grid">
+
+      <div class="card rink-card">
+        <h3>Northland Ice Center</h3>
+        <p class="rink-address">10400 Reading Road<br>Cincinnati, OH 45241</p>
+        <p class="rink-notes">Cincinnati&rsquo;s first year-round rink, open since 1973. Regulation 200&prime; &times; 85&prime; sheet. Phone: <a href="tel:+15135630008">(513) 563-0008</a></p>
+        <p><a class="btn dark" href="https://www.google.com/maps/search/?api=1&amp;query=Northland+Ice+Center+10400+Reading+Road+Cincinnati+OH+45241" target="_blank" rel="noopener">Directions</a></p>
       </div>
+
+      <div class="card rink-card">
+        <h3>Queen City Sportsplex</h3>
+        <p class="rink-address">10765 Reading Road<br>Cincinnati, OH 45241</p>
+        <p class="rink-notes">Two sheets of ice &mdash; check your assignment for the rink number. Formerly Sports Plus Arena; renamed in 2024. Phone: <a href="tel:+15134830233">(513) 483-0233</a></p>
+        <p><a class="btn dark" href="https://www.google.com/maps/search/?api=1&amp;query=Queen+City+Sportsplex+10765+Reading+Road+Cincinnati+OH+45241" target="_blank" rel="noopener">Directions</a></p>
+      </div>
+
+      <div class="card rink-card">
+        <h3>Northern Kentucky Ice Center</h3>
+        <p class="rink-address">2638 Anderson Road<br>Crescent Springs, KY 41017</p>
+        <p class="rink-notes">The only year-round indoor rink in Northern Kentucky. Two surfaces: a full-size NHL sheet and a smaller studio rink. Phone: <a href="tel:+18593441981">(859) 344-1981</a></p>
+        <p><a class="btn dark" href="https://www.google.com/maps/search/?api=1&amp;query=Northern+Kentucky+Ice+Center+2638+Anderson+Road+Crescent+Springs+KY+41017" target="_blank" rel="noopener">Directions</a></p>
+      </div>
+
+    </div>
+
+    <div class="callout mt-2">
+      <p style="margin:0">Working a rink that isn&rsquo;t listed, or spotted something out of date? Let the <a href="board-of-directors.html#bryan-thurnauer">scheduler</a> know and we&rsquo;ll add it. Always confirm the rink and start time on <a href="https://horizonwebref.com/" target="_blank" rel="noopener">Horizon Web Ref</a> before you travel.</p>
     </div>
   </div>
 </section>

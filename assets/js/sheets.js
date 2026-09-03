@@ -205,8 +205,8 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
   }
 
   // Google returns the FIRST tab (not an error) when the requested tab name
-  // doesn't exist, so a missing "Rinks" tab would otherwise render the
-  // Meetings rows as rinks. Each consumer names a column it expects, and we
+  // doesn't exist, so a mistyped tab name would otherwise render one tab's
+  // rows in another's place. Each consumer names a column it expects, and we
   // check the HEADER row - a tab that exists but has no data rows yet is
   // legitimate and must not be mistaken for the wrong tab.
   function fetchTabWithColumns(tab, names) {
@@ -386,32 +386,6 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
       banner.querySelector(".container").innerHTML = html;
       banner.hidden = false;
     }).catch(function (e) { console.warn("Banner sheet unavailable:", e); });
-  }
-
-  /* ---------- rink locations ----------------------------------------------
-
-     Rinks tab: Name | Address | Notes
-     The address is turned into a tap-to-navigate maps link.
-     ---------------------------------------------------------------------- */
-
-  var rinkGrid = document.querySelector("[data-sheet-rinks]");
-  if (rinkGrid && SHEET_ID) {
-    fetchTabWithColumns("Rinks", ["name", "rink"]).then(function (records) {
-      var rinks = records.filter(function (r) { return (r.name || r.rink || "") !== ""; });
-      if (!rinks.length) return;
-      rinkGrid.innerHTML = rinks.map(function (r) {
-        var name = r.name || r.rink || "";
-        var addr = r.address || "";
-        var maps = "https://www.google.com/maps/search/?api=1&query=" +
-          encodeURIComponent(name + (addr ? " " + addr : ""));
-        return "<div class=\"card rink-card\">" +
-          "<h3>" + esc(name) + "</h3>" +
-          (addr ? "<p class=\"rink-address\">" + esc(addr) + "</p>" : "") +
-          (r.notes ? "<p class=\"rink-notes\">" + esc(r.notes) + "</p>" : "") +
-          "<p><a class=\"btn dark\" href=\"" + maps + "\" target=\"_blank\" rel=\"noopener\">Directions</a></p>" +
-          "</div>";
-      }).join("");
-    }).catch(function (e) { console.warn("Rinks sheet unavailable:", e); });
   }
 
   /* ---------- board of directors ----------------------------------------- */
