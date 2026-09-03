@@ -72,10 +72,26 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
     };
   }
 
+  // Read a start year out of "2027", "2027-28", "2027/28" or "2027 - 28".
+  function parseSeasonYear(raw) {
+    var m = String(raw || "").match(/(20\d\d)/);
+    return m ? parseInt(m[1], 10) : null;
+  }
+
   function applySeason(overrides) {
-    var values = seasonValues(seasonStartYear());
+    // A "season" (or "start-year") row re-derives EVERY value from that year,
+    // so bumping the season in the sheet also moves the SafeSport birth year,
+    // the key dates and the renewal example. Any other key in the tab then
+    // overrides just that one value on top.
+    var year = seasonStartYear();
+    if (overrides) {
+      var stated = parseSeasonYear(overrides["season"] || overrides["start-year"] || overrides["year"]);
+      if (stated) year = stated;
+    }
+    var values = seasonValues(year);
     if (overrides) {
       Object.keys(overrides).forEach(function (k) {
+        if (k === "season" || k === "start-year" || k === "year") return;
         if (overrides[k]) values[k] = overrides[k];
       });
     }
@@ -359,7 +375,7 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
       if (!records.length) return;
       var overrides = {};
       records.forEach(function (r) {
-        if (r.key) overrides[r.key.trim()] = r.value;
+        if (r.key) overrides[r.key.trim().toLowerCase()] = r.value;
       });
       applySeason(overrides);
     }).catch(function () { /* no Season tab: derived values stand */ });

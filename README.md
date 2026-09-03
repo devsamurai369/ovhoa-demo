@@ -105,6 +105,8 @@ Addresses as of September 2026, taken from each rink's own website:
 | Northland Ice Center | 10400 Reading Road, Cincinnati, OH 45241 |
 | Queen City Sportsplex | 10765 Reading Road, Cincinnati, OH 45241 |
 | Northern Kentucky Ice Center | 2638 Anderson Road, Crescent Springs, KY 41017 |
+| Indian Hill Winter Club | 10005 Fletcher Road, Camp Dennison, OH 45111 |
+| Goggin Ice Center | 610 S Oak Street, Oxford, OH 45056 |
 
 Note: Queen City Sportsplex was renamed from **Sports Plus Arena** in 2024.
 
@@ -149,15 +151,28 @@ being wrong the moment the new season opens, with no edit needed.
 Derived keys: `label`, `prev-label`, `open`, `close-apps`, `expire-prev`,
 `seminars-end`, `close`, `safesport-year` (season start year minus 17).
 
-**These are derived, not authoritative.** Fees, Playing Rules Exercise question
-counts, and any actual rule changes still need a human to check them against
-usahockey.com/registrationrules each season. If USA Hockey ever moves one of
-the derived dates, add a **`Season`** tab to the Google Sheet with `Key` and
-`Value` columns and any key listed above will be overridden — no code change:
+The season label also appears on the **homepage**, above the meeting schedule.
+
+**Overriding the season from the sheet.** Add a **`Season`** tab with `Key` and
+`Value` columns. A `season` row sets the membership year and *everything else
+re-derives from it* — including the SafeSport birth year:
+
+| Key | Value | Effect |
+| --- | --- | --- |
+| `season` | `2027-28` | whole site moves to 2027-28; SafeSport birth year becomes 2010 |
+
+Accepts `2027`, `2027-28` or `2027/28`. Any other key from the list above can
+be set in the same tab to override just that one value on top of the derived
+set — useful if USA Hockey moves a single date:
 
 | Key | Value |
 | --- | --- |
-| `close-apps` | November 18, 2027 |
+| `season` | `2027-28` |
+| `close-apps` | `November 18, 2027` |
+
+**These are derived, not authoritative.** Fees, Playing Rules Exercise question
+counts, and any actual rule changes still need a human to check them against
+usahockey.com/registrationrules each season.
 
 ### Past meetings drop off automatically
 
