@@ -371,12 +371,17 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
   /* ---------- optional Season overrides ----------------------------------- */
 
   if (seasonEls && SHEET_ID) {
-    fetchTabWithColumns("Season", ["key"]).then(function (records) {
+    // Two accepted shapes for the Season tab:
+    //   simple  - one column headed "Season", the year in the cell below it
+    //   keyed   - "Key" | "Value" columns, for overriding individual dates
+    fetchTabWithColumns("Season", ["season", "key"]).then(function (records) {
       if (!records.length) return;
       var overrides = {};
       records.forEach(function (r) {
-        if (r.key) overrides[r.key.trim().toLowerCase()] = r.value;
+        if (r.season) overrides["season"] = r.season;          // simple shape
+        if (r.key) overrides[r.key.trim().toLowerCase()] = r.value; // keyed shape
       });
+      if (!Object.keys(overrides).length) return;
       applySeason(overrides);
     }).catch(function () { /* no Season tab: derived values stand */ });
   }

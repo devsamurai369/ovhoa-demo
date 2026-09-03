@@ -153,22 +153,20 @@ Derived keys: `label`, `prev-label`, `open`, `close-apps`, `expire-prev`,
 
 The season label also appears on the **homepage**, above the meeting schedule.
 
-**Overriding the season from the sheet.** Add a **`Season`** tab with `Key` and
-`Value` columns. A `season` row sets the membership year and *everything else
-re-derives from it* — including the SafeSport birth year:
+**Setting the season by hand.** Add a **`Season`** tab with a single column
+headed `Season`, and put the year in the cell beneath it. That one cell moves
+the whole site — every date and the SafeSport birth year re-derive from it:
 
-| Key | Value | Effect |
-| --- | --- | --- |
-| `season` | `2027-28` | whole site moves to 2027-28; SafeSport birth year becomes 2010 |
+| Season |
+| --- |
+| 2027-28 |
 
-Accepts `2027`, `2027-28` or `2027/28`. Any other key from the list above can
-be set in the same tab to override just that one value on top of the derived
-set — useful if USA Hockey moves a single date:
+Accepts `2027`, `2027-28` or `2027/28`. Delete the value (or the tab) and the
+site goes back to working the season out from today's date.
 
-| Key | Value |
-| --- | --- |
-| `season` | `2027-28` |
-| `close-apps` | `November 18, 2027` |
+*Advanced:* the same tab also accepts `Key` | `Value` columns if you ever need
+to override one date on its own — e.g. `season` = `2027-28` plus
+`close-apps` = `November 18, 2027`.
 
 **These are derived, not authoritative.** Fees, Playing Rules Exercise question
 counts, and any actual rule changes still need a human to check them against
