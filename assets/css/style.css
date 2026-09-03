@@ -400,6 +400,16 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
 }
 .meeting-list .badge-pill.in-person { background: var(--orange); color: var(--ink); }
 
+/* Shown when every meeting has passed (or the schedule isn't posted yet) */
+.meeting-list .meeting-empty {
+  display: block;
+  text-align: center;
+  color: var(--gray);
+  font-style: italic;
+  padding: 1.25rem 1rem;
+  border-bottom: 0;
+}
+
 /* Stacked variant: date on its own line, description below it */
 .meeting-list.stacked li {
   flex-direction: column;

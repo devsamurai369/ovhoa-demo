@@ -46,6 +46,52 @@ python -m http.server 8000
 
 then open http://localhost:8000.
 
+## Board-editable content via Google Sheets
+
+The homepage **meeting schedule** and the **Board of Directors** roster can be
+driven by a Google Sheet so board members can update the site without touching
+code. Setup (one time):
+
+1. Create a Google Sheet with two tabs named exactly `Meetings` and `Board`:
+   - **Meetings** headers (row 1): `Date | Time | Format | Note`
+     (e.g. `9/2/2026` / `7:30 PM` / `Zoom` / `Board Meeting`, or
+     `March 15, 2026` / `7 PM` / `In Person` / `Location TBA`)
+   - **Board** headers (row 1): `Name | Role | Email` — rows appear on the
+     site in sheet order, so reorder rows to reorder the cards.
+2. Share → General access → **Anyone with the link → Viewer**.
+3. Copy the sheet ID from its URL
+   (`https://docs.google.com/spreadsheets/d/<ID>/edit`) and paste it into
+   `SHEET_ID` at the top of `assets/js/sheets.js`. Paste **only the ID** —
+   the part between `/d/` and `/edit`, not the whole URL.
+4. Only give **edit** access to board members' Google accounts. Everything in
+   these two tabs is publicly readable — no phone numbers or private notes.
+
+Changes to the sheet appear on the site within a few minutes (Google caches
+the published CSV briefly). If the sheet is ever unreachable, the site falls
+back to the content baked into the HTML, so nothing breaks. To refresh that
+fallback occasionally, update the meeting/board content in `build.py` and
+rebuild.
+
+### Past meetings drop off automatically
+
+A meeting disappears from the site once it is more than **`GRACE_DAYS`** days
+old (set at the top of `assets/js/sheets.js`; currently `1`, so a meeting is
+still listed the day after it happened and is gone the day after that). The
+board never has to delete rows — leave them in the sheet as a record and the
+site simply stops showing them. Set `GRACE_DAYS = 2` for a longer grace period.
+
+Notes on how dates are read:
+
+- Understood formats: `9/2/2026`, `2026-09-02`, `March 15, 2026`,
+  `Sunday, March 15, 2026`, `15 March 2026`.
+- A date the site **can't** read is always shown, never hidden — so a typo
+  makes a meeting linger rather than vanish silently. (`TBD` in the Date
+  column therefore stays on the site until you give it a real date.)
+- When every meeting has passed, the section shows
+  "No meetings are currently scheduled — check back soon."
+- The fallback rows baked into `build.py` need a `data-date="YYYY-MM-DD"`
+  attribute so they expire the same way.
+
 ## Deploying to Hostinger
 
 1. In hPanel → **Files → File Manager**, open `public_html`.

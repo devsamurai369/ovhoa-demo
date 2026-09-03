@@ -143,6 +143,7 @@ def page(title, description, active, body):
   </div>
 </footer>
 <script src="assets/js/nav.js"></script>
+<script src="assets/js/sheets.js"></script>
 </body>
 </html>
 """
@@ -168,15 +169,15 @@ HOME = """
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <span class="kicker">2025&ndash;2026 Season</span>
+      <span class="kicker">Upcoming</span>
       <h2>OVHOA General Meetings</h2>
     </div>
-    <ul class="meeting-list card">
-      <li><span class="when">Sunday, November 16, 2025 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Sunday, December 14, 2025 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Monday, January 26, 2026 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Tuesday, February 24, 2026 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Sunday, March 15, 2026 &middot; 7 PM</span> <span class="badge-pill in-person">In Person &middot; Location TBA</span></li>
+    <!-- Live content comes from the Meetings tab of the Google Sheet (see
+         assets/js/sheets.js). The rows below are only a fallback for when the
+         sheet is unreachable; each needs data-date="YYYY-MM-DD" so that past
+         meetings drop off automatically. -->
+    <ul class="meeting-list card" data-sheet-meetings>
+      <li data-date="2026-09-02"><span class="when">September 2, 2026 &middot; 7:30 PM</span> <span class="badge-pill">Zoom &middot; Board Meeting</span></li>
     </ul>
   </div>
 </section>
@@ -241,12 +242,12 @@ BOARD = f"""
 </section>
 <section class="section">
   <div class="container">
-    <div class="board-grid">
-      {board_member("Brian Siuda", "Executive President", "president@ovhoarefs.com")}
-      {board_member("Jeremy MacWalter", "Executive Vice President", "vicepresident@ovhoarefs.com")}
-      {board_member("Chris Sharon", "Executive Treasurer", "treasurer@ovhoarefs.com")}
-      {board_member("Nick Doud", "Executive Secretary", "secretary@ovhoarefs.com")}
-      {board_member("Ken Handley", "Referee-in-Chief", "ric@ovhoarefs.com")}
+    <div class="board-grid" data-sheet-board>
+      {board_member("Brian Siuda", "President", "president@ovhoarefs.com")}
+      {board_member("Jeremy MacWalter", "Vice President", "vicepresident@ovhoarefs.com")}
+      {board_member("David Christensen", "Treasurer", "treasurer@ovhoarefs.com")}
+      {board_member("Nick Doud", "Secretary", "secretary@ovhoarefs.com")}
+      {board_member("Ken Handley", "Local RIC", "ovhoaric@gmail.com")}
       {board_member("Bryan Thurnauer", "Scheduler", "scheduler@ovhoarefs.com")}
     </div>
   </div>
@@ -300,7 +301,7 @@ CONTACT = """
       <div class="card contact-card">
         <h3>Officiating &amp; Rules</h3>
         <p class="role">Referee-in-Chief &mdash; Ken Handley</p>
-        <p><a href="mailto:ric@ovhoarefs.com">ric@ovhoarefs.com</a></p>
+        <p><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a></p>
       </div>
       <div class="card contact-card">
         <h3>Game Scheduling</h3>
@@ -310,7 +311,7 @@ CONTACT = """
       <div class="card contact-card">
         <h3>New Officials &amp; Mentoring</h3>
         <p class="role">Ken Handley (Referee-in-Chief) or Brian Siuda (President)</p>
-        <p><a href="mailto:ric@ovhoarefs.com">ric@ovhoarefs.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
+        <p><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
       </div>
     </div>
     <p class="center mt-2">Looking for someone else? See the full <a href="board-of-directors.html">Board of Directors</a>.</p>
@@ -574,7 +575,7 @@ MENTORING = """
     </div>
     <p class="center mt-2">
       <a class="btn" href="become-an-official.html">Become an Official</a>
-      <a class="btn dark" href="mailto:ric@ovhoarefs.com">Email Ken Handley</a>
+      <a class="btn dark" href="mailto:ovhoaric@gmail.com">Email Ken Handley</a>
       <a class="btn dark" href="mailto:president@ovhoarefs.com">Email Brian Siuda</a>
     </p>
   </div>
@@ -651,7 +652,7 @@ RULE_BOOKS = """
       <div>
         <h2>ACHA</h2>
         <p><strong>Governs:</strong> American Collegiate Hockey Association (collegiate club) games.</p>
-        <p>The ACHA plays under the <strong>NCAA rulebook</strong> &mdash; use the 2026&ndash;28 NCAA rules above. The ACHA does not publish a separate rule-modifications list; any division-specific directives come through the league and your assigner. Questions about ACHA rule application should go to Referee-in-Chief <a href="mailto:ric@ovhoarefs.com">Ken Handley</a>.</p>
+        <p>The ACHA plays under the <strong>NCAA rulebook</strong> &mdash; use the 2026&ndash;28 NCAA rules above. The ACHA does not publish a separate rule-modifications list; any division-specific directives come through the league and your assigner. Questions about ACHA rule application should go to Referee-in-Chief <a href="mailto:ovhoaric@gmail.com">Ken Handley</a>.</p>
         <p>Penalty reporting for ACHA games is on our <a href="file-a-report.html">File a Report</a> page.</p>
         <div class="actions">
           <a class="btn dark" href="https://www.achahockey.org/" target="_blank" rel="noopener">ACHA Website</a>

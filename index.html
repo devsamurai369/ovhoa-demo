@@ -45,15 +45,15 @@
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <span class="kicker">2025&ndash;2026 Season</span>
+      <span class="kicker">Upcoming</span>
       <h2>OVHOA General Meetings</h2>
     </div>
-    <ul class="meeting-list card">
-      <li><span class="when">Sunday, November 16, 2025 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Sunday, December 14, 2025 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Monday, January 26, 2026 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Tuesday, February 24, 2026 &middot; 7 PM</span> <span class="badge-pill">Zoom</span></li>
-      <li><span class="when">Sunday, March 15, 2026 &middot; 7 PM</span> <span class="badge-pill in-person">In Person &middot; Location TBA</span></li>
+    <!-- Live content comes from the Meetings tab of the Google Sheet (see
+         assets/js/sheets.js). The rows below are only a fallback for when the
+         sheet is unreachable; each needs data-date="YYYY-MM-DD" so that past
+         meetings drop off automatically. -->
+    <ul class="meeting-list card" data-sheet-meetings>
+      <li data-date="2026-09-02"><span class="when">September 2, 2026 &middot; 7:30 PM</span> <span class="badge-pill">Zoom &middot; Board Meeting</span></li>
     </ul>
   </div>
 </section>
@@ -124,5 +124,6 @@
   </div>
 </footer>
 <script src="assets/js/nav.js"></script>
+<script src="assets/js/sheets.js"></script>
 </body>
 </html>
