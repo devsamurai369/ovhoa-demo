@@ -192,12 +192,105 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
     }).catch(function (e) { console.warn("Meetings sheet unavailable:", e); });
   }
 
+  /* ---------- contact details keyed off the Board tab ---------------------
+
+     Any element carrying data-contact / data-contact-btn / data-contact-link
+     has its name + address filled in from the Board tab, so changing an
+     address in the sheet (or moving the whole association to a new domain)
+     updates every page at once. Keys map to Role values as below; a key that
+     matches no row simply leaves the baked-in fallback text in place.
+     ---------------------------------------------------------------------- */
+
+  var ROLE_KEYS = {
+    president: ["president", "executivepresident"],
+    vicepresident: ["vicepresident", "executivevicepresident"],
+    treasurer: ["treasurer", "executivetreasurer"],
+    secretary: ["secretary", "executivesecretary"],
+    ric: ["ric", "localric", "refereeinchief"],
+    scheduler: ["scheduler", "gamescheduler", "assignor"],
+    mentoring: ["mentoring", "mentoringcoordinator"]
+  };
+
+  function normalizeRole(s) {
+    return String(s || "").toLowerCase().replace(/[^a-z]/g, "");
+  }
+
+  // Find the board row whose Role matches a key like "ric" or "president".
+  function findByKey(records, key) {
+    var aliases = ROLE_KEYS[normalizeRole(key)];
+    if (!aliases) return null;
+    for (var i = 0; i < records.length; i++) {
+      if (aliases.indexOf(normalizeRole(records[i].role)) !== -1) return records[i];
+    }
+    return null;
+  }
+
+  function lookupAll(records, keyList) {
+    var people = String(keyList).split(",").map(function (k) {
+      return findByKey(records, k.trim());
+    });
+    // Only rewrite when every key resolved, so a card never ends up
+    // half-updated with one live address and one stale one.
+    return people.indexOf(null) === -1 ? people : null;
+  }
+
+  function applyContacts(records) {
+    // Cards: rewrite the role line and the address block.
+    Array.prototype.slice.call(document.querySelectorAll("[data-contact]")).forEach(function (card) {
+      var people = lookupAll(records, card.getAttribute("data-contact"));
+      if (!people) return;
+
+      var roleEl = card.querySelector("[data-contact-role]");
+      if (roleEl) {
+        roleEl.innerHTML = people.length === 1
+          ? esc(people[0].role) + " &mdash; " + esc(people[0].name)
+          : people.map(function (p) {
+              return esc(p.name) + " (" + esc(p.role) + ")";
+            }).join(" or ");
+      }
+
+      var mailEl = card.querySelector("[data-contact-email]");
+      if (mailEl) {
+        mailEl.innerHTML = people.filter(function (p) { return p.email; })
+          .map(function (p) {
+            return "<a href=\"mailto:" + esc(p.email) + "\">" + esc(p.email) + "</a>";
+          }).join("<br>");
+      }
+    });
+
+    // Buttons: "Email <name>" plus the mailto target.
+    Array.prototype.slice.call(document.querySelectorAll("[data-contact-btn]")).forEach(function (btn) {
+      var person = findByKey(records, btn.getAttribute("data-contact-btn"));
+      if (!person || !person.email) return;
+      btn.setAttribute("href", "mailto:" + person.email);
+      btn.textContent = "Email " + person.name;
+    });
+
+    // Inline links: the link text is the person's name.
+    Array.prototype.slice.call(document.querySelectorAll("[data-contact-link]")).forEach(function (link) {
+      var person = findByKey(records, link.getAttribute("data-contact-link"));
+      if (!person || !person.email) return;
+      link.setAttribute("href", "mailto:" + person.email);
+      link.textContent = person.name;
+    });
+  }
+
   /* ---------- board of directors ----------------------------------------- */
 
   var boardGrid = document.querySelector("[data-sheet-board]");
+  var needsContacts = document.querySelector("[data-contact], [data-contact-btn], [data-contact-link]");
+
+  if (!boardGrid && needsContacts) {
+    // Pages that show contact details but not the full roster.
+    fetchTab("Board").then(function (records) {
+      if (records.length) applyContacts(records);
+    }).catch(function (e) { console.warn("Board sheet unavailable:", e); });
+  }
+
   if (boardGrid) {
     fetchTab("Board").then(function (records) {
       if (!records.length) return;
+      applyContacts(records);
       boardGrid.innerHTML = records.map(function (p) {
         var slug = (p.name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
         return "<div class=\"board-card\" id=\"" + slug + "\">" +

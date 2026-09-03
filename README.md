@@ -72,6 +72,36 @@ back to the content baked into the HTML, so nothing breaks. To refresh that
 fallback occasionally, update the meeting/board content in `build.py` and
 rebuild.
 
+### Contact details come from the Board tab too
+
+The email addresses on **Contact Us**, the two buttons on **Mentoring**, and the
+Referee-in-Chief link on **Rule Books** are all filled in from the Board tab —
+so if the association ever changes email domains, updating the sheet updates
+every page at once. Nothing in the HTML needs editing.
+
+Cards are matched to people by their **Role**, using these keys:
+
+| Key | Matches a Role of |
+| --- | --- |
+| `president` | President, Executive President |
+| `vicepresident` | Vice President, Executive Vice President |
+| `treasurer` | Treasurer, Executive Treasurer |
+| `secretary` | Secretary, Executive Secretary |
+| `ric` | RIC, Local RIC, Referee-in-Chief |
+| `scheduler` | Scheduler, Game Scheduler, Assignor |
+| `mentoring` | Mentoring, Mentoring Coordinator |
+
+Matching ignores case, spaces and punctuation, so `Referee-in-Chief` and
+`referee in chief` both work. If a key matches no row (the position is vacant,
+or the Role was renamed to something not listed), that spot simply keeps the
+address baked into the HTML rather than going blank. A card listing two people
+is all-or-nothing: it will not show one live address next to one stale one.
+
+To point a card at a different person, change its `data-contact` key in
+`build.py` and rebuild — e.g. the "New Officials & Mentoring" card uses
+`data-contact="ric,president"` and could become `data-contact="mentoring"`
+once a Mentoring Coordinator is appointed.
+
 ### Past meetings drop off automatically
 
 A meeting disappears from the site once it is more than **`GRACE_DAYS`** days

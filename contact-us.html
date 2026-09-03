@@ -38,26 +38,29 @@
 </section>
 <section class="section">
   <div class="container">
+    <!-- Names and addresses below are only a fallback. Live values come from
+         the Board tab of the Google Sheet, matched on each card's data-contact
+         key (see assets/js/sheets.js). -->
     <div class="contact-grid">
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="president">
         <h3>General Inquiries</h3>
-        <p class="role">Executive President &mdash; Brian Siuda</p>
-        <p><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
+        <p class="role" data-contact-role>President &mdash; Brian Siuda</p>
+        <p data-contact-email><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
       </div>
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="ric">
         <h3>Officiating &amp; Rules</h3>
-        <p class="role">Referee-in-Chief &mdash; Ken Handley</p>
-        <p><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a></p>
+        <p class="role" data-contact-role>Local RIC &mdash; Ken Handley</p>
+        <p data-contact-email><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a></p>
       </div>
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="scheduler">
         <h3>Game Scheduling</h3>
-        <p class="role">Scheduler &mdash; Bryan Thurnauer</p>
-        <p><a href="mailto:scheduler@ovhoarefs.com">scheduler@ovhoarefs.com</a></p>
+        <p class="role" data-contact-role>Scheduler &mdash; Bryan Thurnauer</p>
+        <p data-contact-email><a href="mailto:scheduler@ovhoarefs.com">scheduler@ovhoarefs.com</a></p>
       </div>
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="ric,president">
         <h3>New Officials &amp; Mentoring</h3>
-        <p class="role">Ken Handley (Referee-in-Chief) or Brian Siuda (President)</p>
-        <p><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
+        <p class="role" data-contact-role>Ken Handley (Local RIC) or Brian Siuda (President)</p>
+        <p data-contact-email><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
       </div>
     </div>
     <p class="center mt-2">Looking for someone else? See the full <a href="board-of-directors.html">Board of Directors</a>.</p>

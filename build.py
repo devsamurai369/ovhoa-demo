@@ -292,26 +292,29 @@ CONTACT = """
 </section>
 <section class="section">
   <div class="container">
+    <!-- Names and addresses below are only a fallback. Live values come from
+         the Board tab of the Google Sheet, matched on each card's data-contact
+         key (see assets/js/sheets.js). -->
     <div class="contact-grid">
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="president">
         <h3>General Inquiries</h3>
-        <p class="role">Executive President &mdash; Brian Siuda</p>
-        <p><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
+        <p class="role" data-contact-role>President &mdash; Brian Siuda</p>
+        <p data-contact-email><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
       </div>
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="ric">
         <h3>Officiating &amp; Rules</h3>
-        <p class="role">Referee-in-Chief &mdash; Ken Handley</p>
-        <p><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a></p>
+        <p class="role" data-contact-role>Local RIC &mdash; Ken Handley</p>
+        <p data-contact-email><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a></p>
       </div>
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="scheduler">
         <h3>Game Scheduling</h3>
-        <p class="role">Scheduler &mdash; Bryan Thurnauer</p>
-        <p><a href="mailto:scheduler@ovhoarefs.com">scheduler@ovhoarefs.com</a></p>
+        <p class="role" data-contact-role>Scheduler &mdash; Bryan Thurnauer</p>
+        <p data-contact-email><a href="mailto:scheduler@ovhoarefs.com">scheduler@ovhoarefs.com</a></p>
       </div>
-      <div class="card contact-card">
+      <div class="card contact-card" data-contact="ric,president">
         <h3>New Officials &amp; Mentoring</h3>
-        <p class="role">Ken Handley (Referee-in-Chief) or Brian Siuda (President)</p>
-        <p><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
+        <p class="role" data-contact-role>Ken Handley (Local RIC) or Brian Siuda (President)</p>
+        <p data-contact-email><a href="mailto:ovhoaric@gmail.com">ovhoaric@gmail.com</a><br><a href="mailto:president@ovhoarefs.com">president@ovhoarefs.com</a></p>
       </div>
     </div>
     <p class="center mt-2">Looking for someone else? See the full <a href="board-of-directors.html">Board of Directors</a>.</p>
@@ -575,8 +578,8 @@ MENTORING = """
     </div>
     <p class="center mt-2">
       <a class="btn" href="become-an-official.html">Become an Official</a>
-      <a class="btn dark" href="mailto:ovhoaric@gmail.com">Email Ken Handley</a>
-      <a class="btn dark" href="mailto:president@ovhoarefs.com">Email Brian Siuda</a>
+      <a class="btn dark" data-contact-btn="ric" href="mailto:ovhoaric@gmail.com">Email Ken Handley</a>
+      <a class="btn dark" data-contact-btn="president" href="mailto:president@ovhoarefs.com">Email Brian Siuda</a>
     </p>
   </div>
 </section>
@@ -695,7 +698,7 @@ RULE_BOOKS = """
       <div>
         <h2>ACHA</h2>
         <p><strong>Governs:</strong> American Collegiate Hockey Association (collegiate club) games.</p>
-        <p>The ACHA plays under the <strong>NCAA rulebook</strong> &mdash; use the 2026&ndash;28 NCAA rules above. The ACHA does not publish a separate rule-modifications list; any division-specific directives come through the league and your assigner. Questions about ACHA rule application should go to Referee-in-Chief <a href="mailto:ovhoaric@gmail.com">Ken Handley</a>.</p>
+        <p>The ACHA plays under the <strong>NCAA rulebook</strong> &mdash; use the 2026&ndash;28 NCAA rules above. The ACHA does not publish a separate rule-modifications list; any division-specific directives come through the league and your assigner. Questions about ACHA rule application should go to our Referee-in-Chief, <a data-contact-link="ric" href="mailto:ovhoaric@gmail.com">Ken Handley</a>.</p>
         <p>Penalty reporting for ACHA games is on our <a href="file-a-report.html">File a Report</a> page.</p>
         <div class="actions">
           <a class="btn dark" href="https://www.achahockey.org/" target="_blank" rel="noopener">ACHA Website</a>
