@@ -204,6 +204,28 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
     }).then(function (text) { return toRecords(parseCSV(text)); });
   }
 
+  // Google returns the FIRST tab (not an error) when the requested tab name
+  // doesn't exist, so a missing "Rinks" tab would otherwise render the
+  // Meetings rows as rinks. Each consumer names a column it expects, and we
+  // check the HEADER row - a tab that exists but has no data rows yet is
+  // legitimate and must not be mistaken for the wrong tab.
+  function fetchTabWithColumns(tab, names) {
+    return fetch(csvUrl(tab)).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.text();
+    }).then(function (text) {
+      var rows = parseCSV(text);
+      if (!rows.length) return [];
+      var headers = rows[0].map(function (h) { return h.trim().toLowerCase(); });
+      var matches = names.some(function (n) { return headers.indexOf(n) !== -1; });
+      if (!matches) {
+        console.warn("Sheet tab \"" + tab + "\" is missing (or its headers changed); ignoring.");
+        return [];
+      }
+      return toRecords(rows);
+    });
+  }
+
   /* ---------- meetings --------------------------------------------------- */
 
   var meetingList = document.querySelector("[data-sheet-meetings]");
@@ -223,7 +245,7 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
   if (!SHEET_ID) return;
 
   if (meetingList) {
-    fetchTab("Meetings").then(function (records) {
+    fetchTabWithColumns("Meetings", ["date", "when"]).then(function (records) {
       // An empty Meetings tab means "not filled in yet" — keep the baked-in
       // list rather than blanking the section. Rows that all expired do
       // correctly produce the "no meetings" message.
@@ -333,7 +355,7 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
   /* ---------- optional Season overrides ----------------------------------- */
 
   if (seasonEls && SHEET_ID) {
-    fetchTab("Season").then(function (records) {
+    fetchTabWithColumns("Season", ["key"]).then(function (records) {
       if (!records.length) return;
       var overrides = {};
       records.forEach(function (r) {
@@ -343,6 +365,55 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
     }).catch(function () { /* no Season tab: derived values stand */ });
   }
 
+  /* ---------- homepage announcement banner --------------------------------
+
+     Banner tab: Header | Text  (an optional Author column is used as a
+     by-line if present). The banner stays hidden unless a row has content,
+     so clearing the row removes it from the site.
+     ---------------------------------------------------------------------- */
+
+  var banner = document.querySelector("[data-sheet-banner]");
+  if (banner && SHEET_ID) {
+    fetchTabWithColumns("Banner", ["header", "text"]).then(function (records) {
+      var row = records.filter(function (r) {
+        return (r.header || "") !== "" || (r.text || "") !== "";
+      })[0];
+      if (!row) return;
+      var html = "";
+      if (row.header) html += "<h2>" + esc(row.header) + "</h2>";
+      if (row.text) html += "<p>" + esc(row.text) + "</p>";
+      if (row.author) html += "<p class=\"byline\">&mdash; " + esc(row.author) + "</p>";
+      banner.querySelector(".container").innerHTML = html;
+      banner.hidden = false;
+    }).catch(function (e) { console.warn("Banner sheet unavailable:", e); });
+  }
+
+  /* ---------- rink locations ----------------------------------------------
+
+     Rinks tab: Name | Address | Notes
+     The address is turned into a tap-to-navigate maps link.
+     ---------------------------------------------------------------------- */
+
+  var rinkGrid = document.querySelector("[data-sheet-rinks]");
+  if (rinkGrid && SHEET_ID) {
+    fetchTabWithColumns("Rinks", ["name", "rink"]).then(function (records) {
+      var rinks = records.filter(function (r) { return (r.name || r.rink || "") !== ""; });
+      if (!rinks.length) return;
+      rinkGrid.innerHTML = rinks.map(function (r) {
+        var name = r.name || r.rink || "";
+        var addr = r.address || "";
+        var maps = "https://www.google.com/maps/search/?api=1&query=" +
+          encodeURIComponent(name + (addr ? " " + addr : ""));
+        return "<div class=\"card rink-card\">" +
+          "<h3>" + esc(name) + "</h3>" +
+          (addr ? "<p class=\"rink-address\">" + esc(addr) + "</p>" : "") +
+          (r.notes ? "<p class=\"rink-notes\">" + esc(r.notes) + "</p>" : "") +
+          "<p><a class=\"btn dark\" href=\"" + maps + "\" target=\"_blank\" rel=\"noopener\">Directions</a></p>" +
+          "</div>";
+      }).join("");
+    }).catch(function (e) { console.warn("Rinks sheet unavailable:", e); });
+  }
+
   /* ---------- board of directors ----------------------------------------- */
 
   var boardGrid = document.querySelector("[data-sheet-board]");
@@ -350,13 +421,13 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
 
   if (!boardGrid && needsContacts) {
     // Pages that show contact details but not the full roster.
-    fetchTab("Board").then(function (records) {
+    fetchTabWithColumns("Board", ["name"]).then(function (records) {
       if (records.length) applyContacts(records);
     }).catch(function (e) { console.warn("Board sheet unavailable:", e); });
   }
 
   if (boardGrid) {
-    fetchTab("Board").then(function (records) {
+    fetchTabWithColumns("Board", ["name"]).then(function (records) {
       if (!records.length) return;
       applyContacts(records);
       boardGrid.innerHTML = records.map(function (p) {

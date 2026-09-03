@@ -305,6 +305,44 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
 .page-banner p.lede { margin: 0.5rem 0 0; color: #c9ccd2; max-width: 46rem; }
 
 /* --------------------------------------------------------------------------
+   Announcement banner (homepage, driven by the Banner sheet tab)
+   -------------------------------------------------------------------------- */
+.announce {
+  background: var(--orange);
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.announce[hidden] { display: none !important; }
+.announce .container {
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+.announce h2 {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  margin: 0 0 0.3rem;
+}
+.announce p { margin: 0; }
+.announce .byline {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Rink cards */
+.rink-card h3 { margin-bottom: 0.35rem; }
+.rink-card .rink-address {
+  color: var(--ink-soft);
+  margin: 0 0 0.5rem;
+}
+.rink-card .rink-notes {
+  color: var(--gray);
+  font-size: 0.92rem;
+  margin: 0 0 0.9rem;
+}
+.rink-card .btn { padding: 0.45rem 1rem; font-size: 0.9rem; }
+
+/* --------------------------------------------------------------------------
    Sections & content blocks
    -------------------------------------------------------------------------- */
 .section { padding: clamp(2rem, 5vw, 3.5rem) 0; }

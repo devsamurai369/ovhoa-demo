@@ -4,6 +4,7 @@
 Run:  python build.py
 Output: *.html in this directory. Edit page content in the PAGES dict below.
 """
+import datetime
 import io
 import os
 
@@ -18,6 +19,7 @@ NAV = [
         ("Contact Us", "contact-us.html"),
     ]),
     ("File a Report", "file-a-report.html", None),
+    ("Rinks", "rinks.html", None),
     ("Education & Development", None, [
         ("Become an Official", "become-an-official.html"),
         ("Mentoring", "mentoring.html"),
@@ -118,6 +120,7 @@ def page(title, description, active, body):
         <h4>Officials</h4>
         <ul>
           <li><a href="file-a-report.html">File a Report</a></li>
+          <li><a href="rinks.html">Rink Locations</a></li>
           <li><a href="become-an-official.html">Become an Official</a></li>
           <li><a href="mentoring.html">Mentoring</a></li>
           <li><a href="rule-books.html">Rule Books</a></li>
@@ -154,6 +157,12 @@ def page(title, description, active, body):
 # ---------------------------------------------------------------------------
 
 HOME = """
+<!-- Filled from the Banner tab of the Google Sheet; stays hidden while the
+     tab has no content, so clearing the row removes it from the site. -->
+<section class="announce" data-sheet-banner hidden>
+  <div class="container"></div>
+</section>
+
 <section class="hero">
   <div class="container">
     <h1>Ohio Valley Hockey Officials Association</h1>
@@ -766,12 +775,34 @@ SCOREKEEPERS = """
 </section>
 """
 
+RINKS = """
+<section class="page-banner">
+  <div class="container">
+    <h1>Rink Locations</h1>
+    <p class="lede">Where we work. Addresses and directions for the rinks OVHOA officials are assigned to across Greater Cincinnati and Northern Kentucky.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <!-- Filled from the Rinks tab of the Google Sheet (Name | Address | Notes).
+         Until that tab exists the empty state below is shown. -->
+    <div class="board-grid" data-sheet-rinks>
+      <div class="callout coming-soon" style="grid-column:1/-1">
+        <h2>Rink list coming soon</h2>
+        <p>We&rsquo;re putting together addresses, parking notes and locker-room details for every rink we cover. Working a rink you don&rsquo;t know? Ask your <a href="board-of-directors.html#bryan-thurnauer">scheduler</a> in the meantime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+"""
+
 PAGES = {
     "index.html": ("Home", "Greater Cincinnati and Northern Kentucky ice hockey officials association.", HOME),
     "history.html": ("History", "The history of the Ohio Valley Hockey Officials Association, officiating hockey since the early 1970s.", HISTORY),
     "board-of-directors.html": ("Board of Directors", "Meet the OVHOA Executive Board of Directors.", BOARD),
     "official-documents.html": ("Official Documents", "OVHOA bylaws, manual, and other important documents.", DOCUMENTS),
     "contact-us.html": ("Contact Us", "Contact the OVHOA Board of Directors.", CONTACT),
+    "rinks.html": ("Rink Locations", "Addresses and directions for the rinks OVHOA officials work across Greater Cincinnati and Northern Kentucky.", RINKS),
     "file-a-report.html": ("File a Report", "Penalty and incident reporting tools for USA Hockey, OHSAA, and ACHA games.", FILE_REPORT),
     "become-an-official.html": ("Become an Official", "How to register as a USA Hockey official: levels, requirements, exams, and seminars.", BECOME),
     "mentoring.html": ("Mentoring", "The OVHOA mentoring program helps new officials succeed and improves the game.", MENTORING),
@@ -780,12 +811,59 @@ PAGES = {
 }
 
 
+SITE_URL = "https://ovhoarefs.com"
+NL = chr(10)
+
+# Pages we most want search engines to surface.
+SITEMAP_PRIORITY = {
+    "index.html": "1.0",
+    "become-an-official.html": "0.9",
+    "file-a-report.html": "0.8",
+    "rinks.html": "0.8",
+    "rule-books.html": "0.8",
+    "contact-us.html": "0.7",
+}
+
+
+def write_sitemap():
+    '''robots.txt + sitemap.xml, generated so they cannot drift from PAGES.'''
+    today = datetime.date.today().isoformat()
+    urls = []
+    for fname in PAGES:
+        loc = SITE_URL + "/" if fname == "index.html" else SITE_URL + "/" + fname
+        urls.append(
+            "  <url>" + NL
+            + "    <loc>" + loc + "</loc>" + NL
+            + "    <lastmod>" + today + "</lastmod>" + NL
+            + "    <priority>" + SITEMAP_PRIORITY.get(fname, "0.6") + "</priority>" + NL
+            + "  </url>"
+        )
+    sitemap = ('<?xml version="1.0" encoding="UTF-8"?>' + NL
+               + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL
+               + NL.join(urls) + NL + "</urlset>" + NL)
+    with io.open(os.path.join(OUT_DIR, "sitemap.xml"), "w",
+                 encoding="utf-8", newline=NL) as f:
+        f.write(sitemap)
+    print("wrote sitemap.xml (%d urls)" % len(PAGES))
+
+    robots = ("User-agent: *" + NL
+              + "Allow: /" + NL
+              + NL
+              + "Sitemap: " + SITE_URL + "/sitemap.xml" + NL)
+    with io.open(os.path.join(OUT_DIR, "robots.txt"), "w",
+                 encoding="utf-8", newline=NL) as f:
+        f.write(robots)
+    print("wrote robots.txt")
+
+
 def main():
     for fname, (title, desc, body) in PAGES.items():
         html = page(title, desc, fname, body)
-        with io.open(os.path.join(OUT_DIR, fname), "w", encoding="utf-8", newline="\n") as f:
+        with io.open(os.path.join(OUT_DIR, fname), "w",
+                     encoding="utf-8", newline=NL) as f:
             f.write(html)
-        print(f"wrote {fname} ({len(html)} bytes)")
+        print("wrote %s (%d bytes)" % (fname, len(html)))
+    write_sitemap()
 
 
 if __name__ == "__main__":
