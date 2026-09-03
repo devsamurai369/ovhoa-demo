@@ -34,6 +34,61 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
 
 (function () {
 
+  /* ---------- season-dependent years -------------------------------------
+
+     USA Hockey restates the same requirements each season with the years
+     rolled forward. Rather than hand-editing the Become an Official page
+     every summer, elements marked data-season="..." are filled in from the
+     current membership year, which opens on May 1.
+
+     These are DERIVED, not authoritative. Fees, exam question counts and
+     any rule changes still need a human to check them against
+     usahockey.com/registrationrules each season. If USA Hockey changes one
+     of the derived dates, add a "Season" tab to the Google Sheet with
+     Key | Value columns to override any key below.
+     ---------------------------------------------------------------------- */
+
+  function seasonStartYear() {
+    var now = new Date();
+    // The membership year opens May 1 (month index 4).
+    return now.getMonth() >= 4 ? now.getFullYear() : now.getFullYear() - 1;
+  }
+
+  function seasonValues(y) {
+    var short = function (n) { return String(n).slice(2); };
+    return {
+      "label": y + "–" + short(y + 1),          // 2026-27
+      "prev-label": (y - 1) + "–" + short(y),   // 2025-26
+      "open": "May 1, " + y,
+      "close-apps": "November 20, " + y,
+      "expire-prev": "November 30, " + y,
+      "seminars-end": "December 15, " + y,
+      "close": "December 31, " + y,
+      // SafeSport applies from the season's 17-and-older birth year.
+      "safesport-year": String(y - 17),
+      // Illustrative dates in the SafeSport 12-month renewal example.
+      "example-trained": "September 15, " + (y - 1),
+      "example-renew": "September 15, " + y
+    };
+  }
+
+  function applySeason(overrides) {
+    var values = seasonValues(seasonStartYear());
+    if (overrides) {
+      Object.keys(overrides).forEach(function (k) {
+        if (overrides[k]) values[k] = overrides[k];
+      });
+    }
+    Array.prototype.slice.call(document.querySelectorAll("[data-season]"))
+      .forEach(function (el) {
+        var v = values[el.getAttribute("data-season")];
+        if (v) el.textContent = v;
+      });
+  }
+
+  var seasonEls = document.querySelector("[data-season]");
+  if (seasonEls) applySeason(null);
+
   /* ---------- dates ----------------------------------------------------- */
 
   var MONTHS = {
@@ -273,6 +328,19 @@ var GRACE_DAYS = 1; // days a meeting stays listed after its date (set to 2 for 
       link.setAttribute("href", "mailto:" + person.email);
       link.textContent = person.name;
     });
+  }
+
+  /* ---------- optional Season overrides ----------------------------------- */
+
+  if (seasonEls && SHEET_ID) {
+    fetchTab("Season").then(function (records) {
+      if (!records.length) return;
+      var overrides = {};
+      records.forEach(function (r) {
+        if (r.key) overrides[r.key.trim()] = r.value;
+      });
+      applySeason(overrides);
+    }).catch(function () { /* no Season tab: derived values stand */ });
   }
 
   /* ---------- board of directors ----------------------------------------- */

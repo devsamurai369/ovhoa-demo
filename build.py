@@ -376,21 +376,21 @@ BECOME = """
 <section class="page-banner">
   <div class="container">
     <h1>Become an Official</h1>
-    <p class="lede">USA Hockey Officiating Membership requirements for the 2026&ndash;27 season.</p>
+    <p class="lede">USA Hockey Officiating Membership requirements for the <span data-season="label">2026&ndash;27</span> season.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container prose">
-    <h2>2026&ndash;27 Key Dates</h2>
+    <h2><span data-season="label">2026&ndash;27</span> Key Dates</h2>
     <ul class="meeting-list stacked card" style="max-width:none">
-      <li><span class="when">May 1, 2026</span> <span class="how">Membership applications open for 2026&ndash;27</span></li>
-      <li><span class="when">November 20, 2026</span> <span class="how">Applications close &mdash; no one may begin the membership process after this date</span></li>
-      <li><span class="when">November 30, 2026</span> <span class="how">All 2025&ndash;26 memberships expire</span></li>
-      <li><span class="when">December 15, 2026</span> <span class="how">Classroom seminars for 2026&ndash;27 conclude</span></li>
-      <li><span class="when">December 31, 2026</span> <span class="how">Membership closes &mdash; all education requirements must be complete</span></li>
+      <li><span class="when"><span data-season="open">May 1, 2026</span></span> <span class="how">Membership applications open for <span data-season="label">2026&ndash;27</span></span></li>
+      <li><span class="when"><span data-season="close-apps">November 20, 2026</span></span> <span class="how">Applications close &mdash; no one may begin the membership process after this date</span></li>
+      <li><span class="when"><span data-season="expire-prev">November 30, 2026</span></span> <span class="how">All <span data-season="prev-label">2025&ndash;26</span> memberships expire</span></li>
+      <li><span class="when"><span data-season="seminars-end">December 15, 2026</span></span> <span class="how">Classroom seminars for <span data-season="label">2026&ndash;27</span> conclude</span></li>
+      <li><span class="when"><span data-season="close">December 31, 2026</span></span> <span class="how">Membership closes &mdash; all education requirements must be complete</span></li>
     </ul>
-    <p class="mt-1">An official without a completed 2026&ndash;27 membership after November 30, 2026 becomes ineligible to work USA Hockey sanctioned games until they complete their current season membership and receive their referee card and crest.</p>
+    <p class="mt-1">An official without a completed <span data-season="label">2026&ndash;27</span> membership after <span data-season="expire-prev">November 30, 2026</span> becomes ineligible to work USA Hockey sanctioned games until they complete their current season membership and receive their referee card and crest.</p>
     <p>USA Hockey Officiating Membership is valid for the entire current season in any district or state in the United States. Membership in a local officials association or local hockey league is not required for USA Hockey Officiating Program membership.</p>
 
     <h2 class="mt-2">Registration Basics</h2>
@@ -401,7 +401,7 @@ BECOME = """
     </div>
     <p><strong>Returning game officials.</strong> Returning officials may apply for one membership level higher than their completed membership level the previous season. Once completely registered, an official under 16 years old may remain at Level 1 or choose to advance to Level 2.</p>
     <div class="callout">
-      <p style="margin:0"><strong>New for 2026&ndash;27:</strong> An official who is 16 years old (or older) and has completed Level 1 officiating membership <strong>must advance to Level 2</strong> this season.</p>
+      <p style="margin:0"><strong>New for <span data-season="label">2026&ndash;27</span>:</strong> An official who is 16 years old (or older) and has completed Level 1 officiating membership <strong>must advance to Level 2</strong> this season.</p>
     </div>
     <p><strong>Note:</strong> Once the online membership application has been submitted, an official cannot change the registration level they applied for.</p>
   </div>
@@ -410,7 +410,7 @@ BECOME = """
 <section class="section alt">
   <div class="container">
     <div class="section-title">
-      <span class="kicker">2026&ndash;27 Season</span>
+      <span class="kicker"><span data-season="label">2026&ndash;27</span> Season</span>
       <h2>Membership Education Requirements by Level</h2>
     </div>
     <div class="table-wrap">
@@ -469,8 +469,8 @@ BECOME = """
     <div class="callout mt-2">
       <p style="margin:0 0 0.5rem"><strong>All levels also require:</strong></p>
       <ul style="margin:0">
-        <li>Completion of <a href="https://www.usahockey.com/safesportprogram" target="_blank" rel="noopener">SafeSport training</a> (if 2009 birth year or older)</li>
-        <li>Completion and maintenance of a USA Hockey sanctioned NCSI <a href="https://www.usahockey.com/backgroundscreen" target="_blank" rel="noopener">Background Screen</a> if 18+ years old on May 1, 2026</li>
+        <li>Completion of <a href="https://www.usahockey.com/safesportprogram" target="_blank" rel="noopener">SafeSport training</a> (if <span data-season="safesport-year">2009</span> birth year or older)</li>
+        <li>Completion and maintenance of a USA Hockey sanctioned NCSI <a href="https://www.usahockey.com/backgroundscreen" target="_blank" rel="noopener">Background Screen</a> if 18+ years old on <span data-season="open">May 1, 2026</span></li>
       </ul>
       <p style="margin:0.5rem 0 0"><em>All USA Hockey officiating membership fees are non-refundable.</em></p>
     </div>
@@ -510,8 +510,8 @@ BECOME = """
     <details class="info">
       <summary>SafeSport training</summary>
       <div class="info-body">
-        <p>Officials with a 2009 birth year or older are required to complete the online U.S. Center for SafeSport education program. The online program is free of charge and is hosted on the U.S. Center for SafeSport web platform.</p>
-        <p>All returning officials must renew SafeSport training within 12 months of the previous season&rsquo;s training (e.g., if you completed training on September 15, 2025, you must renew by September 15, 2026). An official who does not maintain annual training within 12 months becomes ineligible to work any USA Hockey sanctioned game.</p>
+        <p>Officials with a <span data-season="safesport-year">2009</span> birth year or older are required to complete the online U.S. Center for SafeSport education program. The online program is free of charge and is hosted on the U.S. Center for SafeSport web platform.</p>
+        <p>All returning officials must renew SafeSport training within 12 months of the previous season&rsquo;s training (e.g., if you completed training on <span data-season="example-trained">September 15, 2025</span>, you must renew by <span data-season="example-renew">September 15, 2026</span>). An official who does not maintain annual training within 12 months becomes ineligible to work any USA Hockey sanctioned game.</p>
       </div>
     </details>
     <details class="info">
@@ -524,7 +524,7 @@ BECOME = """
       <summary>Complete vs. incomplete membership</summary>
       <div class="info-body">
         <p>&ldquo;Complete&rdquo; membership means an official has completed all education requirements at the level for which they applied. &ldquo;Incomplete&rdquo; means an official has submitted a membership application but has not completed all education requirements.</p>
-        <p>A new incomplete official may not officiate any USA Hockey sanctioned games until they are completely registered and receive their current season referee card and sweater crest. If a member official does not complete their education requirements by December 31, 2026, their membership is closed as &ldquo;incomplete&rdquo; and the membership fee is not refunded.</p>
+        <p>A new incomplete official may not officiate any USA Hockey sanctioned games until they are completely registered and receive their current season referee card and sweater crest. If a member official does not complete their education requirements by <span data-season="close">December 31, 2026</span>, their membership is closed as &ldquo;incomplete&rdquo; and the membership fee is not refunded.</p>
         <p>Once complete, a membership is valid through November 30 of the following season. All member officials are responsible for tracking their own progress with membership education requirements.</p>
       </div>
     </details>
@@ -548,7 +548,7 @@ BECOME = """
       </div>
     </details>
     <p class="center mt-2"><a class="btn dark" href="https://membership.usahockey.com/" target="_blank" rel="noopener">Register with USA Hockey</a></p>
-    <p class="center" style="color:var(--gray);font-size:0.88rem">Requirements summarized from the official <a href="https://www.usahockey.com/registrationrules" target="_blank" rel="noopener">USA Hockey 2026&ndash;27 Membership Rules &amp; Policies</a>. Always check the USA Hockey page for the latest rules.</p>
+    <p class="center" style="color:var(--gray);font-size:0.88rem">Requirements summarized from the official <a href="https://www.usahockey.com/registrationrules" target="_blank" rel="noopener">USA Hockey <span data-season="label">2026&ndash;27</span> Membership Rules &amp; Policies</a>. Always check the USA Hockey page for the latest rules.<br>Season years and dates on this page roll forward automatically each May 1. <strong>Fees, exam question counts and any rule changes still need to be checked by hand each season.</strong></p>
   </div>
 </section>
 """

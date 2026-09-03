@@ -102,6 +102,27 @@ To point a card at a different person, change its `data-contact` key in
 `data-contact="ric,president"` and could become `data-contact="mentoring"`
 once a Mentoring Coordinator is appointed.
 
+### Season years update themselves
+
+The **Become an Official** page carries the membership year in ~15 places
+(`2026–27`, `May 1, 2026`, the SafeSport birth year, and so on). Those are
+marked `data-season="..."` in the HTML and filled in at page load from the
+current membership year, which rolls over every **May 1** — so the page stops
+being wrong the moment the new season opens, with no edit needed.
+
+Derived keys: `label`, `prev-label`, `open`, `close-apps`, `expire-prev`,
+`seminars-end`, `close`, `safesport-year` (season start year minus 17).
+
+**These are derived, not authoritative.** Fees, Playing Rules Exercise question
+counts, and any actual rule changes still need a human to check them against
+usahockey.com/registrationrules each season. If USA Hockey ever moves one of
+the derived dates, add a **`Season`** tab to the Google Sheet with `Key` and
+`Value` columns and any key listed above will be overridden — no code change:
+
+| Key | Value |
+| --- | --- |
+| `close-apps` | November 18, 2027 |
+
 ### Past meetings drop off automatically
 
 A meeting disappears from the site once it is more than **`GRACE_DAYS`** days
