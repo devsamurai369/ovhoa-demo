@@ -63,6 +63,8 @@ def nav_html(active):
 def page(title, description, active, body):
     full_title = "Ohio Valley Hockey Officials Association" if active == "index.html" \
         else f"{title} – OVHOA"
+    canonical = SITE_URL + "/" if active == "index.html" else f"{SITE_URL}/{active}"
+    social_image = f"{SITE_URL}/assets/img/hero-ref.jpg"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +72,22 @@ def page(title, description, active, body):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{full_title}</title>
 <meta name="description" content="{description}">
+<link rel="canonical" href="{canonical}">
+<!-- Social preview: how the link renders when shared in a group chat,
+     Facebook group or text message. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ohio Valley Hockey Officials Association">
+<meta property="og:title" content="{full_title}">
+<meta property="og:description" content="{description}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{social_image}">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="611">
+<meta property="og:image:alt" content="Ice hockey official on the ice">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{full_title}">
+<meta name="twitter:description" content="{description}">
+<meta name="twitter:image" content="{social_image}">
 <link rel="icon" type="image/png" href="assets/img/ovhoa-logo-300.png">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -506,6 +524,7 @@ BECOME = """
     <details class="info">
       <summary>Classroom seminar attendance</summary>
       <div class="info-body">
+        <p><a href="https://www.usahockey.com/officialseminars" target="_blank" rel="noopener">Find and register for a seminar through USA Hockey</a> &mdash; seminars and clinics are scheduled and booked in USA Hockey&rsquo;s system, not through OVHOA.</p>
         <p>Attendance at a sanctioned USA Hockey Officiating Classroom Seminar is required for all applicants, regardless of level and years of experience. Once the seminar is complete, the attendance roster is submitted to the USA Hockey National Office for credit within 24&ndash;48 hours; questions about attendance credit should be directed to the course facilitator.</p>
         <p>An official is not required to attend a seminar in their own state or USA Hockey District &mdash; any sanctioned seminar in any district counts toward membership.</p>
       </div>
@@ -829,6 +848,50 @@ RINKS = """
 </section>
 """
 
+NOT_FOUND = """
+<section class="page-banner">
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p class="lede">That page doesn&rsquo;t exist &mdash; it may have been moved or the link may be out of date.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="callout coming-soon">
+      <h2>Let&rsquo;s get you back on the ice</h2>
+      <p class="mt-1">
+        <a class="btn" href="index.html">Back to Home</a>
+      </p>
+    </div>
+    <div class="grid cols-3 mt-2">
+      <div class="card">
+        <h3>Officials</h3>
+        <ul style="margin:0;padding-left:1.1rem">
+          <li><a href="file-a-report.html">File a Report</a></li>
+          <li><a href="rinks.html">Rink Locations</a></li>
+          <li><a href="rule-books.html">Rule Books</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>New to Officiating</h3>
+        <ul style="margin:0;padding-left:1.1rem">
+          <li><a href="become-an-official.html">Become an Official</a></li>
+          <li><a href="mentoring.html">Mentoring</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>About OVHOA</h3>
+        <ul style="margin:0;padding-left:1.1rem">
+          <li><a href="board-of-directors.html">Board of Directors</a></li>
+          <li><a href="official-documents.html">Official Documents</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+"""
+
 PAGES = {
     "index.html": ("Home", "Greater Cincinnati and Northern Kentucky ice hockey officials association.", HOME),
     "history.html": ("History", "The history of the Ohio Valley Hockey Officials Association, officiating hockey since the early 1970s.", HISTORY),
@@ -896,6 +959,22 @@ def main():
                      encoding="utf-8", newline=NL) as f:
             f.write(html)
         print("wrote %s (%d bytes)" % (fname, len(html)))
+    # 404 is generated outside PAGES so it never lands in the sitemap.
+    html = page("Page Not Found",
+                "That page could not be found on the OVHOA website.",
+                "404.html", NOT_FOUND)
+    with io.open(os.path.join(OUT_DIR, "404.html"), "w",
+                 encoding="utf-8", newline=NL) as f:
+        f.write(html)
+    print("wrote 404.html (%d bytes)" % len(html))
+
+    # Tell Apache/LiteSpeed (Hostinger) to serve it. GitHub Pages and
+    # Cloudflare Pages pick up 404.html automatically without this.
+    with io.open(os.path.join(OUT_DIR, ".htaccess"), "w",
+                 encoding="utf-8", newline=NL) as f:
+        f.write("ErrorDocument 404 /404.html" + NL)
+    print("wrote .htaccess")
+
     write_sitemap()
 
 
