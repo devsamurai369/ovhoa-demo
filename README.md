@@ -98,15 +98,15 @@ building. Edit the `RINKS` block in `build.py` and rebuild to add or correct a
 rink. Each card carries a tap-to-navigate **Directions** link, which is the
 useful part on a phone.
 
-Addresses as of September 2026, taken from each rink's own website:
+Address and phone only — verified September 2026 against each rink's own site:
 
-| Rink | Address |
-| --- | --- |
-| Northland Ice Center | 10400 Reading Road, Cincinnati, OH 45241 |
-| Queen City Sportsplex | 10765 Reading Road, Cincinnati, OH 45241 |
-| Northern Kentucky Ice Center | 2638 Anderson Road, Crescent Springs, KY 41017 |
-| Indian Hill Winter Club | 10005 Fletcher Road, Camp Dennison, OH 45111 |
-| Goggin Ice Center | 610 S Oak Street, Oxford, OH 45056 |
+| Rink | Address | Phone |
+| --- | --- | --- |
+| Northland Ice Center | 10400 Reading Road, Cincinnati, OH 45241 | (513) 563-0008 |
+| Queen City Sportsplex | 10765 Reading Road, Cincinnati, OH 45241 | (513) 483-0233 |
+| Northern Kentucky Ice Center | 2638 Anderson Road, Crescent Springs, KY 41017 | (859) 344-1981 |
+| Indian Hill Winter Club | 10005 Fletcher Road, Camp Dennison, OH 45111 | (513) 576-9444 |
+| Goggin Ice Center | 610 S Oak Street, Oxford, OH 45056 | (513) 529-9800 |
 
 Note: Queen City Sportsplex was renamed from **Sports Plus Arena** in 2024.
 
