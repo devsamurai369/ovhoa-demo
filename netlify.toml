@@ -1,0 +1,45 @@
+# Netlify configuration for the OVHOA site.
+#
+# There is no build step: build.py is run on a developer machine and the
+# generated .html files are committed, so Netlify simply publishes what is
+# in the repository. That keeps deploys from ever failing over a build.
+#
+# Netlify serves 404.html automatically for unknown URLs, so the .htaccess
+# file in this repo is unused here — it is kept only in case the site ever
+# moves back to Apache/LiteSpeed hosting.
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# The stylesheet and scripts keep the same filenames between releases, so
+# they must be revalidated - otherwise a fix would not reach anyone who had
+# visited before.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Logos and photos are stable; cache them hard.
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Rulebooks get replaced under the same filename each season, so keep this
+# short enough that a new edition appears the same day.
+[[headers]]
+  for = "/assets/docs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
