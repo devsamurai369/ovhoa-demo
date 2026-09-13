@@ -241,7 +241,7 @@ overwriting it.
 - Bylaws PDF is still the "Coming Soon" placeholder.
 - OVHOA Manual is the 2016–2017 edition.
 - Board bios are all "coming soon" with a placeholder avatar.
-- Rule Books is now filled in (comparison chart, NCAA/USPHL rulebooks), but
+- Rule Books is now filled in (comparison chart, NCAA/ACHA/USPHL rulebooks), but
   **Scorekeeper's Guide is still an empty "coming soon" page** that is linked
   from the main nav — fill it or drop it from NAV in `build.py`.
 - The old Contact Us page said "fill out this form" but rendered no form (the

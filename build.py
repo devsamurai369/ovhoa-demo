@@ -726,10 +726,67 @@ RULE_BOOKS = """
       <div>
         <h2>ACHA</h2>
         <p><strong>Governs:</strong> American Collegiate Hockey Association (collegiate club) games.</p>
-        <p>The ACHA plays under the <strong>NCAA rulebook</strong> &mdash; use the 2026&ndash;28 NCAA rules above. The ACHA does not publish a separate rule-modifications list; any division-specific directives come through the league and your assigner. Questions about ACHA rule application should go to our Referee-in-Chief, <a data-contact-link="ric" href="mailto:ovhoaric@gmail.com">Ken Handley</a>.</p>
-        <p>Penalty reporting for ACHA games is on our <a href="file-a-report.html">File a Report</a> page.</p>
+        <p>The ACHA plays under the <strong>2026&ndash;28 NCAA rulebook</strong> with its own published guidance. All six ACHA divisions &mdash; Men&rsquo;s D1, D2 and D3, Women&rsquo;s D1 and D2, and the ACDC &mdash; have approved the rules below, so they apply to every ACHA game you work.</p>
+
+        <div class="callout">
+          <p style="margin:0"><strong>Fighting is handled differently here than in the USPHL.</strong> In ACHA games the penalty is a <strong>major plus game disqualification</strong>. The USPHL, working from the same NCAA rulebook, substitutes a game misconduct instead. If you work both leagues, this is the difference most likely to catch you out.</p>
+        </div>
+
+        <details class="info">
+          <summary>ACHA guidance on the 2026&ndash;28 NCAA rules</summary>
+          <div class="info-body">
+            <ul>
+              <li><strong>Starting lineup (7.2):</strong> if the team scoring on the first shift challenges the opponent&rsquo;s lineup and it was wrong, the goal nullifies the bench minor and no further penalties are assessed.</li>
+              <li><strong>Helmets (9.4):</strong> intentionally removing a helmet during play is a minor. A goalkeeper who removes their helmet or facemask on an opposing breakaway concedes an awarded goal. See also 67.1.</li>
+              <li><strong>Coincidental penalties (19):</strong> in the last five minutes of regulation or any time in overtime, a minor (or double minor) to one team and a major (or match) to the other at the same stoppage means the three-minute (or one-minute) differential is <em>served immediately as a major</em>. The team receiving the major must place the replacement in the box before the penalty expires &mdash; immediately in the case of a major plus game misconduct or disqualification. Applies regardless of on-ice strength; examples are in Appendix G, page 138.</li>
+              <li><strong>Major penalties (20):</strong> a second major in the same game is an automatic game misconduct.</li>
+              <li><strong>Goalkeeper penalties (28.2):</strong> a goalkeeper is not sent to the box for a major or misconduct &mdash; it is served immediately by a teammate who was on the ice, designated by the coach through the captain, and that substitute may not be changed. If the goalkeeper&rsquo;s major plus game misconduct is coincidental with a major or game misconduct to the other team, nobody serves it, since the goalkeeper has been ejected.</li>
+              <li><strong>Fighting (48.1):</strong> defined as one player punching or attempting to punch an opponent <em>repeatedly</em>, or two players wrestling such that linespersons cannot separate them. A single punch is roughing. <strong>Penalty &mdash; major plus game disqualification.</strong></li>
+              <li><strong>Sucker punch (53.3) &mdash; women&rsquo;s game only:</strong> a major to a player who punches an unsuspecting or unwilling opponent in a way that could cause injury.</li>
+              <li><strong>Head-butting (49):</strong> a minor may be called for an attempted or non-forcible head-butt; reserve major and game misconduct for a forcible or egregious one.</li>
+              <li><strong>Checking from behind (50):</strong> &ldquo;in open ice&rdquo; removed from the rule.</li>
+              <li><strong>Hitting after the whistle (53.3):</strong> eliminated as its own infraction &mdash; call it roughing or unsportsmanlike conduct.</li>
+              <li><strong>Throwing the stick (55.5):</strong> outside the playing area is now a game misconduct rather than a misconduct.</li>
+              <li><strong>Goalkeeper leaving stick (55):</strong> if a goalkeeper leaving the ice leaves a stick or equipment, or piles snow, and it stops an imminent goal, a goal is awarded.</li>
+              <li><strong>Interference (59.1):</strong> any defending-team member, including a coach or non-playing person, who throws or shoots a stick or object at the puck or puck carrier in their defending zone concedes a penalty shot.</li>
+              <li><strong>Obstruction/Interference (60):</strong> removed from the 2026&ndash;28 rulebook.</li>
+              <li><strong>Awarded goal (67.5):</strong> on a breakaway, a player or goalkeeper may not deliberately displace the goal post or remove their helmet/facemask.</li>
+              <li><strong>No line change (67.6):</strong> on a dump-in from the attacking team&rsquo;s own side of the centre red line that the goalkeeper freezes, the face-off is in the goalkeeper&rsquo;s defending zone with no defensive substitutions &mdash; and <strong>the attacking team chooses which end-zone dot</strong>.</li>
+              <li><strong>Offensive language (79.3):</strong> renamed from &ldquo;ethnic/racial slurs&rdquo;. Covers profane, threatening, vulgar or derogatory remarks relating to race, ethnicity, national origin, religion, gender, gender expression, gender identity, sexual orientation or disability. Penalty &mdash; game disqualification, except medical personnel, who are subject to supplementary discipline.</li>
+              <li><strong>Spitting (79.5):</strong> on an official, player or non-playing person &mdash; major and game disqualification.</li>
+              <li><strong>Face-offs (81):</strong> the full blade must be flat on the ice inside the designated white area. At the eight face-off spots the <em>defending</em> player places their stick first; at centre ice the <em>visiting</em> player goes first.</li>
+              <li><strong>Hand pass (84):</strong> play is not stopped for a hand pass by players in their own defending zone. The puck&rsquo;s location when contacted by either player determines the zone.</li>
+              <li><strong>High stick (84.4):</strong> on a high-sticking-the-puck violation by the defending team in its own zone, the offending team may change players.</li>
+              <li><strong>Face-off location after a hand pass or high stick (84.3/84.4):</strong> the nearest dot to the infraction with the least territorial advantage gained.</li>
+              <li><strong>Offside (86.1):</strong> a player must control the puck with their stick before their skates enter the offensive zone. A player controlling the puck who crosses the line ahead of it is not offside provided they had possession and control with the stick before both skates fully crossed the leading edge of the blue line.</li>
+              <li><strong>Time-outs (92.1):</strong> one 60-second time-out per team in regular-season games. Only one time-out &mdash; team or commercial &mdash; per stoppage, and a commercial time-out counts as an official time-out charged to neither team. No back-to-back time-outs, none after a face-off violation, none once penalty-shot instructions have been given, and none during a shootout. <em>New:</em> none granted to the defending team when it may not substitute under Rule 80.3.</li>
+              <li><strong>Overtime time-outs (92.2):</strong> <em>new</em> &mdash; no additional time-outs in regular-season overtime when the game is tied after 60 minutes.</li>
+              <li><strong>Shootout eligibility (91.2):</strong> every player may shoot unless serving a 10-minute misconduct or assessed a game misconduct or disqualification. When a goalkeeper takes a misconduct, the designated server becomes ineligible; if that happens during the shootout, the designated server must be a player who has not yet shot, and they become ineligible.</li>
+            </ul>
+            <p><em>Overtime and shootout formats vary by division &mdash; check the ACHA manual or the overtime/shootout guidelines on the <a href="https://www.achahockey.org/officials" target="_blank" rel="noopener">ACHA officials page</a>.</em></p>
+          </div>
+        </details>
+
+        <details class="info">
+          <summary>Women&rsquo;s divisions: body checking and the 2026&ndash;27 point of emphasis</summary>
+          <div class="info-body">
+            <p><strong>Rule 94.1 &mdash; body checking</strong> is not permitted anywhere on the ice. It occurs when a player delivers a distinct and definable moment of impact using overt hip, shoulder, arm or torso action to separate the puck carrier from the puck. Penalty &mdash; a minor, a major and game misconduct, or a major and disqualification, at the referee&rsquo;s discretion.</p>
+            <p>The NCAA&rsquo;s 2026&ndash;27 point of emphasis modernises how Rule 94 is applied, rewarding superior angling and positioning rather than penalising all contact. <strong>Legal body contact</strong> requires the initiating player to keep a skating lane consistent with the puck&rsquo;s location, deliver shoulder-to-shoulder contact from even with or ahead of the opponent, avoid contact from behind where the opponent cannot expect it, keep the stick on the ice or ready to play the puck, and avoid both an overt extension to deliver force and any explosive upward or outward motion.</p>
+            <p>Four scenarios are classified as <strong>legal</strong> contact:</p>
+            <ul>
+              <li><strong>Parallel possession pursuit</strong> &mdash; skating the same direction, a defender even with or ahead of the carrier leans them off the puck shoulder-to-shoulder. Legal with no extension or opposite-direction motion. Contact from <em>behind</em> the carrier is a body check, as the carrier is defenceless.</li>
+              <li><strong>The end-wall pursuit</strong> &mdash; guiding an opponent into the boards with a hand on the hip, stick on the ice, releasing once momentum is neutralised. This is &ldquo;steering&rdquo;, not boarding or checking, provided there is no excessive shove.</li>
+              <li><strong>The forward angle and the cut-back</strong> &mdash; a defender who has established a legal angling route is entitled to their skating lane and need not vacate it if the carrier cuts back into it.</li>
+              <li><strong>The 50/50 puck battle</strong> &mdash; contact that is a byproduct of winning the lane, without an opposite-direction hit with extension, is not a penalty.</li>
+            </ul>
+            <p><strong>Guidance to officials:</strong> judge the action, not the outcome. The deciding factor between a minor for body checking and legal body contact is the delivery &mdash; a player may position their body to impede, but may not propel their body to impact. Contact without puck possession falls under Rule 59, interference.</p>
+          </div>
+        </details>
+
+        <p>Penalty reporting for ACHA games is on our <a href="file-a-report.html">File a Report</a> page. Questions on ACHA rule application go to our Referee-in-Chief, <a data-contact-link="ric" href="mailto:ovhoaric@gmail.com">Ken Handley</a>.</p>
         <div class="actions">
-          <a class="btn dark" href="https://www.achahockey.org/" target="_blank" rel="noopener">ACHA Website</a>
+          <a class="btn" href="assets/docs/ACHA_NCAA_Rule_Updates_2026-28.pdf" target="_blank" rel="noopener">ACHA Rule Updates 2026&ndash;28 (PDF)</a>
+          <a class="btn dark" href="https://www.achahockey.org/officials" target="_blank" rel="noopener">ACHA Officials Page</a>
         </div>
       </div>
     </div>
