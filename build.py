@@ -658,27 +658,6 @@ RULE_BOOKS = """
         </div>
       </details>
 
-      <details class="info">
-        <summary>Changing players: the NCAA is the strict one</summary>
-        <div class="info-body">
-          <p>This is the sharpest practical split between the levels. Under USA Hockey and NFHS rules a team may change in all of these; under NCAA rules &mdash; and therefore in ACHA and USPHL games &mdash; it may not.</p>
-          <div class="table-wrap">
-            <table class="levels">
-              <thead><tr><th>After&hellip;</th><th>USA Hockey</th><th>NFHS</th><th>NCAA</th></tr></thead>
-              <tbody>
-                <tr><td class="level-name">Icing the puck</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
-                <tr><td class="level-name">Shooting the puck over the glass / out of play in the defending zone</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
-                <tr><td class="level-name">Accidentally dislodging the goal (defending team)</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
-                <tr><td class="level-name">Goalkeeper freezing a puck shot from behind centre, unpressured</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
-                <tr><td class="level-name">Line change clock at any stoppage</td><td>5 seconds each</td><td>5 seconds each</td><td>5 seconds visiting, 8 seconds home</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mt-1">Full NCAA detail, including the exceptions, is in the <strong>NCAA Rules</strong> card below.</p>
-          <p><strong>One row in the PDF to ignore.</strong> The chart still lists &ldquo;player change after hand pass stoppage &mdash; not permitted in defending zone&rdquo; for the NCAA. That is carried over from the previous edition: under the 2026&ndash;28 rulebook a hand pass in a team&rsquo;s own defending zone <em>does not stop play at all</em> (Rule 84.2), so no such stoppage arises, and Rule 80.3 does not list hand passes among the no-change situations.</p>
-        </div>
-      </details>
-
       <div class="callout">
         <p style="margin:0"><strong>Three NCAA equipment rules change again next season.</strong> The chart flags them as coming in <strong>2027&ndash;28</strong>: throat/neck protectors become required for goalkeepers <em>and</em> players, neck protectors become required equipment, and cut-resistant socks and sleeves become required. They are recommended or optional for 2026&ndash;27.</p>
       </div>
