@@ -670,12 +670,12 @@ RULE_BOOKS = """
                 <tr><td class="level-name">Shooting the puck over the glass / out of play in the defending zone</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
                 <tr><td class="level-name">Accidentally dislodging the goal (defending team)</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
                 <tr><td class="level-name">Goalkeeper freezing a puck shot from behind centre, unpressured</td><td>Permitted</td><td>Permitted</td><td>Not permitted</td></tr>
-                <tr><td class="level-name">A hand pass stoppage</td><td>Permitted</td><td>Permitted</td><td>Not permitted in the defending zone</td></tr>
                 <tr><td class="level-name">Line change clock at any stoppage</td><td>5 seconds each</td><td>5 seconds each</td><td>5 seconds visiting, 8 seconds home</td></tr>
               </tbody>
             </table>
           </div>
           <p class="mt-1">Full NCAA detail, including the exceptions, is in the <strong>NCAA Rules</strong> card below.</p>
+          <p><strong>One row in the PDF to ignore.</strong> The chart still lists &ldquo;player change after hand pass stoppage &mdash; not permitted in defending zone&rdquo; for the NCAA. That is carried over from the previous edition: under the 2026&ndash;28 rulebook a hand pass in a team&rsquo;s own defending zone <em>does not stop play at all</em> (Rule 84.2), so no such stoppage arises, and Rule 80.3 does not list hand passes among the no-change situations.</p>
         </div>
       </details>
 
