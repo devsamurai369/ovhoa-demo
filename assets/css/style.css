@@ -517,6 +517,11 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
   align-items: start;
   padding: 1.75rem;
 }
+/* Grid items default to min-width:auto, which lets a wide child (a rules
+   table) push the whole page sideways instead of scrolling inside its own
+   .table-wrap. Allow the column to shrink so the wrapper can do its job. */
+.report-block > * { min-width: 0; }
+.table-wrap { max-width: 100%; }
 .report-block .org-logo {
   align-self: center;
   justify-self: center;

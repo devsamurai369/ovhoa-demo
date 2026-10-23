@@ -708,6 +708,62 @@ RULE_BOOKS = """
           </div>
         </details>
         <details class="info">
+          <summary>No-change situations &mdash; when a team may not substitute</summary>
+          <div class="info-body">
+            <p>Rule 80.3 names four violations after which the offending team <strong>may not make any player substitution before the ensuing face-off</strong>:</p>
+            <div class="table-wrap">
+              <table class="levels">
+                <thead><tr><th>Situation</th><th>Rule</th><th>Who is frozen</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="level-name">Icing</td>
+                    <td>85.4</td>
+                    <td>The team that iced the puck. A team using delay tactics is warned, then given a bench minor for any further delay.</td>
+                  </tr>
+                  <tr>
+                    <td class="level-name">Puck shot directly out of play from the defending zone</td>
+                    <td>89.2</td>
+                    <td>The offending team. Shooting or batting the puck <em>directly</em> (non-deflected) out of the playing surface. A deliberate violation is also penalised as delay of game.</td>
+                  </tr>
+                  <tr>
+                    <td class="level-name">Goal displaced by the defending team</td>
+                    <td>67.6 / 80.1</td>
+                    <td>The offending team, when a defending skater accidentally displaces the goal.</td>
+                  </tr>
+                  <tr>
+                    <td class="level-name">Dump-in frozen by the goalkeeper</td>
+                    <td>67.6</td>
+                    <td>The <em>defending</em> team, when the attacking team shoots the puck into the end zone from its own side of the centre red line and the goalkeeper freezes it.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="mt-1"><strong>The exceptions, which apply to all of them:</strong> a team may still substitute to replace a goalkeeper who had been pulled for an extra attacker, to replace an injured player, or when a penalty has been assessed that affects the on-ice strength of either team.</p>
+
+            <p><strong>Face-off location.</strong> On both of the Rule 67.6 situations, the face-off is in the defending zone and <strong>the attacking team chooses which end-zone dot</strong>.</p>
+
+            <p><strong>Watch the fine print on puck-out-of-play (89.2).</strong> The rule does <em>not</em> apply when the puck goes into the players&rsquo; bench, or when it leaves the playing area directly off a face-off. It <em>does</em> apply when the puck goes over the glass behind the players&rsquo; bench. An injured player may still be replaced.</p>
+
+            <p><strong>A team cannot buy its way out with a time-out</strong> &mdash; no time-out is granted to a team that is not permitted to substitute under Rule 80.3.</p>
+
+            <details class="info">
+              <summary>Line change procedure (80.3 / 80.4)</summary>
+              <div class="info-body">
+                <ul>
+                  <li>The visiting team places its lineup first and gets up to <strong>five seconds</strong>; the referee then raises a hand to close visiting changes and start the home team&rsquo;s, which gets up to <strong>eight seconds</strong>; lowering the hand ends all changes.</li>
+                  <li>The home team&rsquo;s right to change last does <strong>not</strong> apply following an icing.</li>
+                  <li>Once the procedure is complete, no further substitution is allowed until the face-off has been completed legally and play has resumed &mdash; except for penalties that affect on-ice strength, including one assessed for a face-off violation.</li>
+                  <li>Undue delay by either team: the referee orders them to take their positions and permits no further changes. Repeat attempts draw a bench minor.</li>
+                </ul>
+              </div>
+            </details>
+
+            <p class="mt-1"><em>Two things that are <strong>not</strong> no-change situations, and catch people out: a hand pass in a team&rsquo;s own defending zone no longer stops play at all (84.2), and when the defending team high-sticks the puck in its own zone the offending team <strong>is</strong> permitted to change (84.4).</em></p>
+          </div>
+        </details>
+
+        <details class="info">
           <summary>NCAA penalty terminology for USA Hockey officials</summary>
           <div class="info-body">
             <p><strong>Game misconduct (Rule 22):</strong> Suspension for the balance of the game; a substitute may replace the player immediately. With a major + game misconduct, the team places a substitute in the box to serve the major.</p>
@@ -764,6 +820,23 @@ RULE_BOOKS = """
               <li><strong>Shootout eligibility (91.2):</strong> every player may shoot unless serving a 10-minute misconduct or assessed a game misconduct or disqualification. When a goalkeeper takes a misconduct, the designated server becomes ineligible; if that happens during the shootout, the designated server must be a player who has not yet shot, and they become ineligible.</li>
             </ul>
             <p><em>Overtime and shootout formats vary by division &mdash; check the ACHA manual or the overtime/shootout guidelines on the <a href="https://www.achahockey.org/officials" target="_blank" rel="noopener">ACHA officials page</a>.</em></p>
+          </div>
+        </details>
+
+        <details class="info">
+          <summary>No-change situations &mdash; when a team may not substitute</summary>
+          <div class="info-body">
+            <p>ACHA games follow the NCAA rule, so the same four violations freeze the offending team&rsquo;s bench until the ensuing face-off:</p>
+            <ul>
+              <li><strong>Icing (85.4)</strong> &mdash; the team that iced it.</li>
+              <li><strong>Puck shot or batted directly out of play from the defending zone (89.2)</strong> &mdash; non-deflected only. A deliberate one is also delay of game. Does not apply if the puck goes into the players&rsquo; bench or leaves directly off a face-off; it <em>does</em> apply over the glass behind the bench.</li>
+              <li><strong>Goal displaced by a defending skater (67.6 / 80.1)</strong> &mdash; the offending team.</li>
+              <li><strong>Dump-in frozen by the goalkeeper (67.6)</strong> &mdash; the <em>defending</em> team, when the attacking team shoots it in from its own side of the centre red line.</li>
+            </ul>
+            <p><strong>Always allowed anyway:</strong> replacing a goalkeeper who had been pulled for an extra attacker, replacing an injured player, or a substitution made necessary by a penalty that affects on-ice strength.</p>
+            <p>On both Rule 67.6 situations the face-off is in the defending zone and <strong>the attacking team picks which end-zone dot</strong>. And under the 2026&ndash;28 time-out rule, <strong>no time-out is granted to a team that is not permitted to substitute</strong> under Rule 80.3 &mdash; a bench cannot buy itself a change.</p>
+            <p class="mt-1"><em>Not no-change situations: a hand pass inside a team&rsquo;s own defending zone no longer stops play (84.2), and on a defending-team high stick in its own zone the offending team <strong>may</strong> change (84.4).</em></p>
+            <p>Full detail, including the line change procedure and its timings, is in the <strong>NCAA Rules</strong> card above.</p>
           </div>
         </details>
 
